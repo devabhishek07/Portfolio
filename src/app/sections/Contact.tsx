@@ -7,7 +7,10 @@ import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { RandomLetterSwapPingPong } from "@/components/ui/random-letter-swap";
 import { Instagram, Linkedin, XLogo } from "@/components/ui/Icons";
 
+const WEB3FORMS_ACCESS_KEY = "769d1301-d14f-4e16-a1fc-662c80b4251f";
+
 export function Contact() {
+  const [submissionStatus, setSubmissionStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,9 +20,31 @@ export function Contact() {
 
   const mailtoUrl = `mailto:abhishekkumardev57@gmail.com?subject=${encodeURIComponent(formData.subject || "Project inquiry")}&body=${encodeURIComponent(`Hi Abhishek,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    window.location.href = mailtoUrl;
+    setSubmissionStatus("sending");
+
+    const submission = new FormData(e.currentTarget);
+    submission.append("access_key", WEB3FORMS_ACCESS_KEY);
+    submission.append("from_name", "Abhishek Kumar Portfolio");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submission,
+        headers: { Accept: "application/json" },
+      });
+      const result = await response.json() as { success?: boolean };
+
+      if (!response.ok || !result.success) {
+        throw new Error("Web3Forms submission failed");
+      }
+
+      setSubmissionStatus("success");
+      setFormData({ name: "", email: "", subject: "Project inquiry", message: "" });
+    } catch {
+      setSubmissionStatus("error");
+    }
   };
 
   return (
@@ -125,10 +150,13 @@ export function Contact() {
                 onSubmit={handleSubmit}
                 className="space-y-8"
               >
+                <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-xs font-medium uppercase tracking-[0.2em] text-white/40 ml-1">Name</label>
+                    <label htmlFor="contact-name" className="text-xs font-medium uppercase tracking-[0.2em] text-white/40 ml-1">Name</label>
                     <input 
+                      id="contact-name"
+                      name="name"
                       required
                       type="text" 
                       placeholder="Your name"
@@ -138,8 +166,10 @@ export function Contact() {
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-xs font-medium uppercase tracking-[0.2em] text-white/40 ml-1">Email</label>
+                    <label htmlFor="contact-email" className="text-xs font-medium uppercase tracking-[0.2em] text-white/40 ml-1">Email</label>
                     <input 
+                      id="contact-email"
+                      name="email"
                       required
                       type="email" 
                       placeholder="you@example.com"
@@ -151,8 +181,10 @@ export function Contact() {
                 </div>
                 
                 <div className="space-y-3">
-                  <label className="text-xs font-medium uppercase tracking-[0.2em] text-white/40 ml-1">Subject</label>
+                  <label htmlFor="contact-subject" className="text-xs font-medium uppercase tracking-[0.2em] text-white/40 ml-1">Subject</label>
                   <input 
+                    id="contact-subject"
+                    name="subject"
                     type="text" 
                     placeholder="Project inquiry"
                     className="form-input w-full px-5 py-4 rounded-2xl bg-white/[0.03] border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-white/30 transition-all text-sm"
@@ -162,8 +194,10 @@ export function Contact() {
                 </div>
 
                 <div className="space-y-3">
-                  <label className="text-xs font-medium uppercase tracking-[0.2em] text-white/40 ml-1">Message</label>
+                  <label htmlFor="contact-message" className="text-xs font-medium uppercase tracking-[0.2em] text-white/40 ml-1">Message</label>
                   <textarea 
+                    id="contact-message"
+                    name="message"
                     required
                     rows={5}
                     placeholder="Tell me about your project, preferred style, deliverables, and timeline."
@@ -173,14 +207,20 @@ export function Contact() {
                   />
                 </div>
 
-                <p className="text-xs text-white/40">Your email app will open with the message ready to send.</p>
+                <p role="status" aria-live="polite" className={`text-xs ${submissionStatus === "error" ? "text-red-300" : submissionStatus === "success" ? "text-emerald-300" : "text-white/40"}`}>
+                  {submissionStatus === "sending" && "Sending your message…"}
+                  {submissionStatus === "success" && "Message sent. Thanks for reaching out!"}
+                  {submissionStatus === "error" && "Couldn’t send your message. Please try again or use the email app."}
+                  {submissionStatus === "idle" && "Your message will be sent directly to my inbox."}
+                </p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-2">
                   <LiquidButton 
                     type="submit" 
+                    disabled={submissionStatus === "sending"}
                     className="flex-1 h-14 shadow-[0_20px_40px_rgba(255,255,255,0.1)]"
                   >
-                    Send Message
-                    <Send className="h-4 w-4 ml-2" />
+                    {submissionStatus === "sending" ? "Sending…" : submissionStatus === "success" ? "Message Sent" : "Send Message"}
+                    {submissionStatus !== "success" && <Send className="h-4 w-4 ml-2" />}
                   </LiquidButton>
                   <a 
                     href={mailtoUrl}
