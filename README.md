@@ -24,4 +24,3 @@ Open [http://localhost:3000](http://localhost:3000).
 - `src/components` contains shared interface components.
 - `public` contains the resume, profile image, thumbnails, and site icons.
 - `scripts` contains utilities for managing portfolio images.
-

@@ -1,0 +1,370 @@
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN TOKENS — CSS Custom Properties
+   ============================================ */
+
+:root {
+  /* Dark theme palette as per spec */
+  --background: #0c0c0c;
+  --foreground: #ffffff;
+  --muted: #111;
+  --muted-foreground: #444444;
+  --border: rgba(255, 255, 255, 0.05);
+  --accent: #ffffff;
+  
+  /* Tokens referenced across components (were previously undefined) */
+  --gradient-start: #ffffff;
+  --gradient-end: #9a9a9a;
+  --container-max-width: 1400px;
+  --container-padding: 1.5rem;
+  --section-padding: 6rem;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+  --ease-default: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Use a familiar system font consistently throughout the portfolio. */
+  --app-font-serif: Arial, Helvetica, sans-serif;
+  --app-font-sans: Arial, Helvetica, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 100px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --font-serif: var(--app-font-serif);
+  --font-sans: var(--app-font-sans);
+  --font-mono: var(--app-font-sans);
+
+  --animate-spotlight: spotlight 2s ease .75s 1 forwards;
+
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%,-40%) scale(1);
+    }
+  }
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  border-color: var(--border);
+}
+
+/* Hide the native cursor only where the custom cursor is actually rendered
+   (mouse / trackpad). Touch devices keep default behaviour. */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  html * {
+    cursor: none !important;
+  }
+
+  .native-cursor,
+  .native-cursor * {
+    cursor: auto !important;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--app-font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--gradient-start);
+  color: #ffffff;
+}
+
+/* ============================================
+   LENIS (smooth scroll) base styles
+   ============================================ */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* ============================================
+   CUSTOM UTILITIES
+   ============================================ */
+
+/* Section Container */
+.section-container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.section-padding {
+  padding-block: var(--section-padding);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Highlight border */
+.highlight-border {
+  border: 1px solid var(--gradient-start);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--gradient-start) 20%, transparent);
+}
+
+/* Glass effect */
+.glass {
+  background: color-mix(in srgb, var(--background) 70%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Heading sizes */
+.heading-1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.heading-2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+
+.heading-3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+/* Smooth transitions */
+.transition-default {
+  transition: all var(--duration-normal) var(--ease-default);
+}
+
+.transition-slow {
+  transition: all var(--duration-slow) var(--ease-smooth);
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+
+.form-input {
+  width: 100%;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #0f0f0f;
+  backdrop-filter: blur(10px);
+  color: var(--foreground);
+  padding: 1.25rem 1.5rem;
+  font-size: 0.95rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.form-input:focus {
+  background: #141414;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.03);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-2deg);
+  }
+}
+
+
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.25;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+/* ============================================
+   GRAIN OVERLAY
+   ============================================ */
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+}
+
+.grain-overlay::after {
+  content: '';
+  position: absolute; 
+  inset: 0;
+  /* Optimized noise using a lightweight tiling image instead of expensive SVG turbulence */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================
+   GLOW CARD STYLES
+   ============================================ */
+
+[data-glow]::before,
+[data-glow]::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: calc(var(--border-size) * -1);
+  border: var(--border-size) solid transparent;
+  border-radius: calc(var(--radius) * 1px);
+  background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+/* Border-only mask for the outer card */
+[data-glow]:not([data-glow] [data-glow])::before,
+[data-glow]:not([data-glow] [data-glow])::after {
+  mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+}
+
+[data-glow]::before {
+  background-image: radial-gradient(
+    calc(var(--spotlight-size) * 0.95) calc(var(--spotlight-size) * 0.95) at
+    calc(var(--x, 0) * 1px)
+    calc(var(--y, 0) * 1px),
+    hsl(var(--hue, 210), 100%, 60%, var(--border-spot-opacity, 1)), transparent 100%
+  );
+  filter: brightness(var(--glow-brightness, 4));
+}
+
+[data-glow]::after {
+  background-image: radial-gradient(
+    calc(var(--spotlight-size) * 0.6) calc(var(--spotlight-size) * 0.6) at
+    calc(var(--x, 0) * 1px)
+    calc(var(--y, 0) * 1px),
+    hsl(0 100% 100% / var(--border-light-opacity, 1)), transparent 100%
+  );
+}
+
+[data-glow] [data-glow] {
+  position: absolute;
+  inset: 0;
+  will-change: filter;
+  opacity: var(--outer, 1);
+  border-radius: calc(var(--radius) * 1px);
+  border-width: calc(var(--border-size) * 20);
+  filter: blur(calc(var(--border-size) * 10));
+  background: none;
+  pointer-events: none;
+  border: none;
+}
+
+[data-glow] > [data-glow]::before {
+  inset: -10px;
+  border-width: 10px;
+}
