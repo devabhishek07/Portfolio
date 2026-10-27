@@ -202,7 +202,7 @@ export const About = () => {
                   <RandomLetterSwapPingPong label="What I do" />
                 </h3>
                 <div className="flex flex-col gap-4">
-                  <TextEffect preset="blur" className="text-base md:text-lg text-white/70 leading-relaxed font-sans">
+                  <TextEffect preset="blur" className="text-base md:text-lg text-white/70 leading-relaxed font-sans text-justify">
                     I edit talking-head videos, social clips, and ads. I also design campaign graphics and use AI tools when a project needs generated footage or images.
                   </TextEffect>
                 </div>

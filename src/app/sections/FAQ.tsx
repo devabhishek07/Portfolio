@@ -46,8 +46,8 @@ export const FAQ = () => {
                 <span className="text-[10px] text-white">⊙</span>
                 <span className="text-xs font-medium uppercase tracking-widest text-white/80">FAQ</span>
               </div>
-              <h2 className="text-5xl md:text-6xl font-serif text-white flex flex-wrap gap-x-4">
-                <RandomLetterSwapPingPong label="Common questions" />
+              <h2 className="text-4xl md:text-6xl font-serif text-white flex flex-wrap gap-x-4">
+                <RandomLetterSwapPingPong label="Frequently asked questions" />
               </h2>
               <p className="text-white/40 text-lg leading-relaxed">
                 Details about my work and the contact process.

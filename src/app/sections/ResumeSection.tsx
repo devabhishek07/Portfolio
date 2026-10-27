@@ -49,7 +49,7 @@ export const ResumeSection = () => {
                 </TextScramble>
               </div>
               <h2 className="text-5xl md:text-7xl font-serif text-white tracking-tight leading-[1.1]">
-                Experience
+                Resume
               </h2>
               <p className="text-white/40 text-lg leading-relaxed">
                 Download my resume for roles, dates, and education.

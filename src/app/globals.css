@@ -90,6 +90,38 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Keep the type system consistent across every section and screen size. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--app-font);
+  text-wrap: balance;
+  letter-spacing: -0.03em;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.7;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 ::selection {
   background: var(--gradient-start);
   color: #ffffff;

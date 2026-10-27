@@ -65,8 +65,8 @@ export function Contact() {
                 </span>
               </div>
               <h2 className="text-5xl md:text-6xl font-serif text-white leading-tight flex flex-wrap gap-x-3 gap-y-2">
-                <RandomLetterSwapPingPong label="Tell me about" />
-                <RandomLetterSwapPingPong label="your project" className="text-white/40 italic" />
+                <RandomLetterSwapPingPong label="Start a" />
+                <RandomLetterSwapPingPong label="project" className="text-white/40" />
               </h2>
               <p className="text-lg text-white/60 leading-relaxed max-w-md font-sans">
                 Tell me what you need and when. I&apos;ll reply by email.
