@@ -9,15 +9,15 @@ import { scrollToTarget } from "@/lib/scroll";
 
 const milestones = [
   {
-    title: "First-Prize Recognition",
-    category: "Competition Awards",
-    description: "Won first prize as a video editor in two college-level competitions held during EXPLORA and TECHSRIJAN.",
+    title: "Two first prizes",
+    category: "Video editing competitions",
+    description: "I won first prize for video editing at EXPLORA and TECHSRIJAN.",
     icon: Trophy,
   },
   {
-    title: "AI-Assisted Creative Workflow",
-    category: "Workflow Innovation",
-    description: "Integrated Veo 3, Nano Banana, and ChatGPT into the creative workflow to accelerate production and enhance ad quality.",
+    title: "AI tools in my workflow",
+    category: "Video and image work",
+    description: "I use Veo 3, Nano Banana, and ChatGPT for generated footage, images, and script ideas when a project calls for them.",
     icon: Sparkles,
   }
 ];
@@ -33,16 +33,16 @@ export const Testimonials = () => {
             <div className="flex flex-col gap-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 w-fit">
                 <span className="text-[10px] text-white">⊙</span>
-                <span className="text-[10px] uppercase tracking-widest text-white/40">Achievements</span>
+                <span className="text-[10px] uppercase tracking-widest text-white/40">Awards &amp; work</span>
               </div>
               
               <div className="flex flex-col gap-4">
                 <h2 className="text-5xl md:text-7xl font-serif text-white tracking-tight flex flex-wrap gap-x-3 md:gap-x-4">
-                  <RandomLetterSwapPingPong label="Creative" />
-                  <RandomLetterSwapPingPong label="Milestones" className="text-white/30" />
+                  <RandomLetterSwapPingPong label="Awards" />
+                  <RandomLetterSwapPingPong label="and work" className="text-white/30" />
                 </h2>
                 <p className="text-white/40 text-lg leading-relaxed">
-                  Recognition and practical experience that shape my creative work.
+                  Two college competition wins and some of the tools I use.
                 </p>
               </div>
             </div>
@@ -52,13 +52,13 @@ export const Testimonials = () => {
                 onClick={() => scrollToTarget('projects')}
                 size="lg"
               >
-                Explore My Work
+                See my work
               </LiquidButton>
               <LiquidButton 
                 onClick={() => scrollToTarget('contact')}
                 size="lg"
               >
-                Let&apos;s Talk
+                Contact me
               </LiquidButton>
             </div>
           </SectionReveal>

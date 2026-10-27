@@ -13,24 +13,24 @@ export const FAQ = () => {
 
   const faqs = [
     {
-      question: "What services do you offer?",
-      answer: "I work on video editing, AI-generated video ads, talking-head content, promotional videos, reels, motion graphics, and graphic design."
+      question: "What work can you take on?",
+      answer: "Video editing, talking-head videos, short ads, Reels, motion graphics, and graphic design."
     },
     {
-      question: "How can I discuss a project with you?",
-      answer: "Email me at abhishekkumardev57@gmail.com with your brief, references, deliverables, and preferred timeline."
+      question: "How do I get in touch?",
+      answer: "Use the contact form or email me at abhishekkumardev57@gmail.com. A short project description and timeline are helpful."
     },
     {
       question: "Which editing and design tools do you use?",
-      answer: "My toolkit includes Adobe After Effects, Adobe Premiere Pro, Adobe Photoshop, and Canva."
+      answer: "I use Adobe After Effects, Premiere Pro, Photoshop, and Canva."
     },
     {
-      question: "Which AI tools do you work with?",
-      answer: "I use Veo 3, Nano Banana, Runway, Higgsfield AI, ChatGPT, ElevenLabs, and OpenArt as part of my creative workflow."
+      question: "Which AI tools do you use?",
+      answer: "Veo 3, Nano Banana, Runway, Higgsfield AI, ChatGPT, ElevenLabs, and OpenArt. The project determines which ones I use."
     },
     {
-      question: "What types of projects have you worked on?",
-      answer: "My experience includes AI-generated advertisements for FRND, talking-head videos at DigiChowk and for Askul Global, design work at Pixelo Digital, freelance campaigns and reels, and the ELECTRA 2024 teaser."
+      question: "What projects have you worked on?",
+      answer: "Video ads for FRND, social videos at DigiChowk, talking-head videos for Askul Global, graphics at Pixelo Digital, and the ELECTRA 2024 teaser."
     }
   ];
 
@@ -47,11 +47,10 @@ export const FAQ = () => {
                 <span className="text-xs font-medium uppercase tracking-widest text-white/80">FAQ</span>
               </div>
               <h2 className="text-5xl md:text-6xl font-serif text-white flex flex-wrap gap-x-4">
-                <RandomLetterSwapPingPong label="Questions &" />
-                <RandomLetterSwapPingPong label="Answers" className="text-white/40 italic" />
+                <RandomLetterSwapPingPong label="Common questions" />
               </h2>
               <p className="text-white/40 text-lg leading-relaxed">
-                A quick overview of my services and creative background.
+                Details about my work and the contact process.
               </p>
             </div>
 
@@ -60,13 +59,13 @@ export const FAQ = () => {
                 onClick={() => scrollToTarget('projects')}
                 size="lg"
               >
-                Explore My Work
+                See my work
               </LiquidButton>
               <LiquidButton 
                 onClick={() => scrollToTarget('contact')}
                 size="lg"
               >
-                Let&apos;s Talk
+                Contact me
               </LiquidButton>
             </div>
           </SectionReveal>

@@ -12,6 +12,7 @@ import {
  
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { scrollToTarget } from "@/lib/scroll";
  
 export interface DockItemData {
   link: string;
@@ -46,7 +47,7 @@ export const AnimatedDock = ({ className, items }: AnimatedDockProps) => {
             onClick={(e) => {
               if (item.link.startsWith('#')) {
                 e.preventDefault();
-                document.querySelector(item.link)?.scrollIntoView({ behavior: 'smooth' });
+                scrollToTarget(item.link.slice(1), -110);
               }
             }}
           >

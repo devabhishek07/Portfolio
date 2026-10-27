@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { RandomLetterSwapPingPong } from "@/components/ui/random-letter-swap";
 import { Instagram, Linkedin, XLogo } from "@/components/ui/Icons";
@@ -61,16 +61,15 @@ export function Contact() {
               <div className="flex items-center gap-2">
                 <span className="text-[10px] text-white">⊙</span>
                 <span className="text-xs font-medium uppercase tracking-widest text-white/40">
-                  Let&apos;s Connect
+                  Contact
                 </span>
               </div>
               <h2 className="text-5xl md:text-6xl font-serif text-white leading-tight flex flex-wrap gap-x-3 gap-y-2">
-                <RandomLetterSwapPingPong label="Let's Create" />
-                <RandomLetterSwapPingPong label="Something" />
-                <RandomLetterSwapPingPong label="Worth Watching" className="text-white/40 italic" />
+                <RandomLetterSwapPingPong label="Tell me about" />
+                <RandomLetterSwapPingPong label="your project" className="text-white/40 italic" />
               </h2>
               <p className="text-lg text-white/60 leading-relaxed max-w-md font-sans">
-                Have a video, campaign, or design project in mind? Share your ideas, references, and goals, and let&apos;s discuss how I can help.
+                Tell me what you need and when. I&apos;ll reply by email.
               </p>
             </div>
 
@@ -83,18 +82,6 @@ export function Contact() {
                   <h4 className="text-xs font-bold text-white/40 uppercase tracking-widest mb-1">Email Me</h4>
                   <a href="mailto:abhishekkumardev57@gmail.com" className="text-lg text-white hover:text-white/70 transition-colors">
                     abhishekkumardev57@gmail.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-5">
-                <div className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 flex-shrink-0">
-                  <Phone className="h-5 w-5" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-white/40 uppercase tracking-widest mb-1">Phone</h4>
-                  <a href="tel:+917398689314" className="text-lg text-white hover:text-white/70 transition-colors">
-                    +91 7398689314
                   </a>
                 </div>
               </div>
@@ -200,7 +187,7 @@ export function Contact() {
                     name="message"
                     required
                     rows={5}
-                    placeholder="Tell me about your project, preferred style, deliverables, and timeline."
+                    placeholder="What do you need help with, and when do you need it?"
                     className="form-input w-full px-5 py-4 rounded-2xl bg-white/[0.03] border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-white/30 transition-all text-sm resize-none"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}

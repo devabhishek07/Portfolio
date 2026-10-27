@@ -2,17 +2,17 @@ import type { NavLink, SocialLink } from "@/types";
 
 export const siteConfig = {
   name: "Abhishek Kumar",
-  title: "%s | Abhishek Kumar — Video Editor & Graphic Designer",
-  defaultTitle: "Abhishek Kumar — Video Editor & Graphic Designer",
+  title: "%s | Abhishek Kumar — Video Editor",
+  defaultTitle: "Abhishek Kumar — Video Editor and Graphic Designer",
   description:
-    "Video Editor & Graphic Designer creating engaging stories through editing, motion, design, and AI-assisted visuals. Based in Gorakhpur, India.",
+    "Video editor and graphic designer in Gorakhpur, India. Selected video, advertising, motion graphics, and design work.",
   ogImage: "/og-image.png",
   twitterHandle: "",
 };
 
 export const navLinks: NavLink[] = [
-  { label: "AI Videos", href: "#ai-videos" },
-  { label: "Video Edits", href: "#video-edits" },
+  { label: "AI Videos", href: "#work-ai-videos" },
+  { label: "Video Edits", href: "#work-video-edits" },
   { label: "Designs", href: "#designs" },
   { label: "About", href: "#about" },
 ];
@@ -29,11 +29,6 @@ export const socialLinks: SocialLink[] = [
     name: "Email",
     url: "mailto:abhishekkumardev57@gmail.com",
     icon: "Mail",
-  },
-  {
-    name: "Phone",
-    url: "tel:+917398689314",
-    icon: "Phone",
   },
 ];
 

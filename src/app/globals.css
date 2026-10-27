@@ -24,9 +24,10 @@
   --ease-default: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
 
-  /* Pair a calm sans-serif with an editorial display face and restrained mono labels. */
-  --app-font-serif: var(--font-dm-serif), Georgia, serif;
-  --app-font-sans: var(--font-dm-sans), Arial, sans-serif;
+  /* Use one familiar sans-serif face throughout the site. */
+  --app-font: var(--font-roboto), Arial, Helvetica, sans-serif;
+  --app-font-serif: var(--app-font);
+  --app-font-sans: var(--app-font);
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -43,7 +44,7 @@
   --color-border: var(--border);
   --font-serif: var(--app-font-serif);
   --font-sans: var(--app-font-sans);
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-mono: var(--app-font);
 
   --animate-spotlight: spotlight 2s ease .75s 1 forwards;
 
@@ -84,7 +85,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--app-font-sans);
+  font-family: var(--app-font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

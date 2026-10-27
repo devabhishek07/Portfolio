@@ -11,38 +11,38 @@ export const Process = () => {
   const services = [
     {
       number: "01",
-      title: "AI Video Advertising",
-      description: "Create AI-generated video ads with attention to visual realism, narrative consistency, and platform-focused creative execution.",
+      title: "AI video ads",
+      description: "Make video ads with AI-generated footage and images for social and paid campaigns.",
       icon: Sparkles,
     },
     {
       number: "02",
-      title: "Talking-Head Video Editing",
-      description: "Shape spoken content into engaging videos through clear pacing, purposeful cuts, and polished visual presentation.",
+      title: "Talking-head editing",
+      description: "Edit interviews and presenter videos with clean cuts, captions, and graphics.",
       icon: MessageSquare,
     },
     {
       number: "03",
-      title: "Promotional Videos & Reels",
-      description: "Turn footage and concepts into promotional videos and social reels with a clear message and engaging storytelling.",
+      title: "Promotional videos and Reels",
+      description: "Cut footage into short videos for launches, events, and social media.",
       icon: Film,
     },
     {
       number: "04",
-      title: "Motion Graphics",
-      description: "Use animation, typography, and 3D camera techniques to support the story and bring visual elements to life.",
+      title: "Motion graphics",
+      description: "Create animated titles, text, and 3D camera moves.",
       icon: Layers,
     },
     {
       number: "05",
-      title: "Graphic Design",
-      description: "Design campaign assets, social media posts, presentations, and branding materials with consistent visual communication.",
+      title: "Graphic design",
+      description: "Design campaign graphics, social posts, presentations, and brand materials.",
       icon: Palette,
     },
     {
       number: "06",
-      title: "Post-Production",
-      description: "Refine videos through color grading, audio mixing, speed ramping, and rotoscoping.",
+      title: "Video finishing",
+      description: "Color grade footage, mix audio, adjust speed, and mask moving subjects.",
       icon: Scissors,
     },
   ];
@@ -63,11 +63,10 @@ export const Process = () => {
             </TextScramble>
           </div>
           <h2 className="text-5xl md:text-7xl font-serif text-white flex flex-wrap justify-center items-center gap-x-3 md:gap-x-4">
-            <RandomLetterSwapPingPong label="Creative" />
-            <RandomLetterSwapPingPong label="Services" className="text-white/40 italic" />
+            <RandomLetterSwapPingPong label="Services" />
           </h2>
           <p className="text-white/40 text-lg max-w-md">
-            Video editing, AI-assisted visuals, and design for brands, creators, and digital platforms.
+            Video editing, motion graphics, and design work.
           </p>
         </SectionReveal>
 
@@ -80,6 +79,7 @@ export const Process = () => {
               delay={i * 0.08}
             >
               <motion.div
+                id={service.number === "05" ? "designs" : undefined}
                 className="p-8 rounded-[2rem] border border-white/10 bg-[#111] relative group overflow-hidden h-full flex flex-col"
               >
                 {/* Number Badge */}
@@ -102,12 +102,6 @@ export const Process = () => {
                   </p>
                 </div>
 
-                {/* Bottom Service Label */}
-                <div className="mt-8 pt-8 border-t border-white/5">
-                  <span className="text-[10px] uppercase tracking-widest text-white/20 font-bold bg-white/5 px-4 py-1.5 rounded-full">
-                    Service {service.number}
-                  </span>
-                </div>
               </motion.div>
             </SectionReveal>
           ))}

@@ -19,13 +19,6 @@ export const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "AI Videos", href: "#ai-videos" },
-    { name: "Video Edits", href: "#video-edits" },
-    { name: "Designs", href: "#designs" },
-    { name: "About", href: "#about" },
-  ];
-
   return (
     <motion.header
       initial={{ y: -100, x: "-50%", opacity: 0 }}
@@ -52,12 +45,12 @@ export const Navigation = () => {
         <AnimatedDock
           items={[
             {
-              link: "#ai-videos",
+              link: "#work-ai-videos",
               Icon: <span className="text-[10px] md:text-xs font-medium whitespace-nowrap px-1 md:px-2">AI Videos</span>,
               label: "AI Videos"
             },
             {
-              link: "#video-edits",
+              link: "#work-video-edits",
               Icon: <span className="text-[10px] md:text-xs font-medium whitespace-nowrap px-1 md:px-2">Video Edits</span>,
               label: "Video Edits"
             },
@@ -85,7 +78,7 @@ export const Navigation = () => {
         className="flex items-center gap-2 bg-white text-[#0c0c0c] px-3 md:px-5 py-2 rounded-full text-sm font-semibold hover:bg-white/90 transition-colors shrink-0"
       >
         <span>✦</span>
-        <span className="hidden sm:inline">Let&apos;s Talk</span>
+        <span className="hidden sm:inline">Contact me</span>
       </motion.button>
     </motion.header>
   );

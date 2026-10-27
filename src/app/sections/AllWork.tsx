@@ -214,7 +214,7 @@ const JUMP_GROUPS = [
     label: 'Videos',
     links: [
       { label: 'DTC Ads', id: `work-sub-${workSlug('DTC Ads')}` },
-      { label: 'AI Film Making/Microdramas', id: `work-sub-${workSlug('AI FILM MAKING/MICRODRAMAS')}` },
+      { label: 'AI films & microdramas', id: `work-sub-${workSlug('AI Films & Microdramas')}` },
       { label: 'AI Storytelling', id: `work-sub-${workSlug('AI Storytelling')}` },
       { label: 'Cartoon Advertisements', id: `work-sub-${workSlug('Cartoon Advertisements')}` },
       { label: 'Motion Graphics', id: `work-sub-${workSlug('Motion Graphics')}` },
@@ -280,31 +280,31 @@ const AllWork = () => {
         {
           name: "DTC Ads",
           items: [
-            { id: "dtc-NQGkHaMQr0w", title: "Assignment1 1", tag: "DTC Ads", type: "youtube", videoId: "NQGkHaMQr0w", isVertical: true },
-            { id: "dtc-ZaoHmk7s1S8", title: "1 1", tag: "DTC Ads", type: "youtube", videoId: "ZaoHmk7s1S8", isVertical: true },
-            { id: "dtc-ehvAu9tJiGU", title: "VIDEO 1", tag: "DTC Ads", type: "youtube", videoId: "ehvAu9tJiGU", isVertical: true },
-            { id: "dtc-fqcKu8v7jbI", title: "VIDEO 2", tag: "DTC Ads", type: "youtube", videoId: "fqcKu8v7jbI", isVertical: true },
-            { id: "dtc-dc4KmxCgTSw", title: "VIDEO 4", tag: "DTC Ads", type: "youtube", videoId: "dc4KmxCgTSw", isVertical: true },
+            { id: "dtc-NQGkHaMQr0w", title: "DTC ad 01", tag: "DTC Ads", type: "youtube", videoId: "NQGkHaMQr0w", isVertical: true },
+            { id: "dtc-ZaoHmk7s1S8", title: "DTC ad 02", tag: "DTC Ads", type: "youtube", videoId: "ZaoHmk7s1S8", isVertical: true },
+            { id: "dtc-ehvAu9tJiGU", title: "DTC ad 03", tag: "DTC Ads", type: "youtube", videoId: "ehvAu9tJiGU", isVertical: true },
+            { id: "dtc-fqcKu8v7jbI", title: "DTC ad 04", tag: "DTC Ads", type: "youtube", videoId: "fqcKu8v7jbI", isVertical: true },
+            { id: "dtc-dc4KmxCgTSw", title: "DTC ad 05", tag: "DTC Ads", type: "youtube", videoId: "dc4KmxCgTSw", isVertical: true },
           ]
         },
         {
-          name: "AI FILM MAKING/MICRODRAMAS",
+          name: "AI Films & Microdramas",
           items: [
-            { id: "ai-film-ONJkfWwlXg4", title: "3", tag: "AI FILM MAKING/MICRODRAMAS", type: "youtube", videoId: "ONJkfWwlXg4" },
-            { id: "ai-film-w4eaCtA0yxc", title: "Ai Film", tag: "AI FILM MAKING/MICRODRAMAS", type: "youtube", videoId: "w4eaCtA0yxc" },
+            { id: "ai-film-ONJkfWwlXg4", title: "AI microdrama 01", tag: "AI Films & Microdramas", type: "youtube", videoId: "ONJkfWwlXg4" },
+            { id: "ai-film-w4eaCtA0yxc", title: "AI microdrama 02", tag: "AI Films & Microdramas", type: "youtube", videoId: "w4eaCtA0yxc" },
           ]
         },
         {
           name: "AI Storytelling",
           items: [
-            { id: "ai-story-SPQJ5s6bWyk", title: "Assignment  2", tag: "AI Storytelling", type: "youtube", videoId: "SPQJ5s6bWyk", isVertical: true },
-            { id: "ai-story-qF2oUtdswVI", title: "Assignment  1", tag: "AI Storytelling", type: "youtube", videoId: "qF2oUtdswVI", isVertical: true },
+            { id: "ai-story-SPQJ5s6bWyk", title: "AI story 01", tag: "AI Storytelling", type: "youtube", videoId: "SPQJ5s6bWyk", isVertical: true },
+            { id: "ai-story-qF2oUtdswVI", title: "AI story 02", tag: "AI Storytelling", type: "youtube", videoId: "qF2oUtdswVI", isVertical: true },
           ]
         },
         {
           name: "Cartoon Advertisements",
           items: [
-            { id: "cartoon-hxsKre4FbgI", title: "PIXAR 1", tag: "Cartoon Advertisements", type: "youtube", videoId: "hxsKre4FbgI", isVertical: true },
+            { id: "cartoon-hxsKre4FbgI", title: "Cartoon ad 01", tag: "Cartoon Advertisements", type: "youtube", videoId: "hxsKre4FbgI", isVertical: true },
           ]
         },
       ]
@@ -318,10 +318,10 @@ const AllWork = () => {
         {
           name: "Motion Graphics",
           items: [
-            { id: "motion-UWUybnqWsQk", title: "Final amazon", tag: "Motion Graphics", type: "youtube", videoId: "UWUybnqWsQk", isVertical: true },
-            { id: "motion-UMvPrUM4hHo", title: "Motion Graphics 1", tag: "Motion Graphics", type: "youtube", videoId: "UMvPrUM4hHo", isVertical: true },
-            { id: "motion-FA0pcZJoDl0", title: "Draft Preview", tag: "Motion Graphics", type: "youtube", videoId: "FA0pcZJoDl0" },
-            { id: "motion-01H1TOQ6uuk", title: "1", tag: "Motion Graphics", type: "youtube", videoId: "01H1TOQ6uuk" },
+            { id: "motion-UWUybnqWsQk", title: "Amazon motion ad", tag: "Motion Graphics", type: "youtube", videoId: "UWUybnqWsQk", isVertical: true },
+            { id: "motion-UMvPrUM4hHo", title: "Motion graphic 02", tag: "Motion Graphics", type: "youtube", videoId: "UMvPrUM4hHo", isVertical: true },
+            { id: "motion-FA0pcZJoDl0", title: "Motion graphic preview", tag: "Motion Graphics", type: "youtube", videoId: "FA0pcZJoDl0" },
+            { id: "motion-01H1TOQ6uuk", title: "Motion graphic 03", tag: "Motion Graphics", type: "youtube", videoId: "01H1TOQ6uuk" },
           ]
         },
         {
@@ -373,21 +373,21 @@ const AllWork = () => {
             <RandomLetterSwapPingPong label="Work" className="text-white/40 italic" />
           </h2>
           <p className="text-white/50 text-base md:text-lg max-w-xl">
-            Explore my work across talking-head videos, event promos, AI-powered advertising, and visual design.
+            Videos, ads, and motion graphics I have worked on.
           </p>
         </SectionReveal>
 
         {/* Verified Projects Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-16 md:mb-20 max-w-4xl mx-auto">
+        <div id="work-video-edits" className="grid scroll-mt-28 grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-16 md:mb-20 max-w-4xl mx-auto">
           <div className="p-7 rounded-[2rem] border border-white/10 bg-[#111] flex flex-col justify-between gap-4">
             <div>
               <div className="flex items-center justify-between gap-2 mb-2">
-                <span className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Talking-Head Editing</span>
+                <span className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Video editing</span>
                 <span className="text-xs font-mono text-white/20">26 Feb 2026</span>
               </div>
               <h3 className="text-xl font-serif text-white mb-2">Talking-Head Video — Askul Global</h3>
               <p className="text-sm text-white/50 leading-relaxed">
-                Produced and edited talking-head videos in Adobe After Effects for Askul Global, focusing on visual quality and audience engagement.
+                Edited talking-head videos for Askul Global in Adobe After Effects.
               </p>
             </div>
             <div>
@@ -397,7 +397,7 @@ const AllWork = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-xs text-white/80 hover:bg-white hover:text-black hover:border-white transition-all"
               >
-                <span>Watch Video</span>
+                <span>View video</span>
                 <span className="text-xs">↗</span>
               </a>
             </div>
@@ -411,7 +411,7 @@ const AllWork = () => {
               </div>
               <h3 className="text-xl font-serif text-white mb-2">ELECTRA Teaser 2024</h3>
               <p className="text-sm text-white/50 leading-relaxed">
-                Edited the official teaser for ELECTRA, MMMUT&apos;s largest departmental fest, hosted by EEL.
+                Edited the teaser for ELECTRA 2024, a festival organized by EEL at MMMUT.
               </p>
             </div>
             <div>
@@ -421,7 +421,7 @@ const AllWork = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-xs text-white/80 hover:bg-white hover:text-black hover:border-white transition-all"
               >
-                <span>Watch Teaser</span>
+                <span>View teaser</span>
                 <span className="text-xs">↗</span>
               </a>
             </div>
@@ -444,17 +444,16 @@ const AllWork = () => {
                 duration={1.2}
                 characterSet="⊹⊡⊞⊟◈◇◆"
               >
-                Featured Showreel
+              Featured videos
               </TextScramble>
               <div className="h-[1px] w-8 bg-gradient-to-l from-transparent to-white/20" />
             </div>
             <h3 className="text-2xl md:text-4xl font-serif text-white tracking-tight flex flex-wrap items-center justify-center gap-x-2 md:gap-x-3">
-              <RandomLetterSwapPingPong label="Click" className="text-white/90" />
-              <RandomLetterSwapPingPong label="to explore" className="text-white/40 italic" />
-              <RandomLetterSwapPingPong label="my best work" className="text-white/90" />
+              <RandomLetterSwapPingPong label="Choose" className="text-white/90" />
+              <RandomLetterSwapPingPong label="a video" className="text-white/40 italic" />
             </h3>
             <p className="text-sm text-white/30 max-w-md">
-              Watch my showreel
+              Use the thumbnails to switch videos.
             </p>
           </motion.div>
         </SectionReveal>

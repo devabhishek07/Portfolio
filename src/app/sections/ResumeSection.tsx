@@ -10,19 +10,19 @@ import { SectionReveal } from "@/components/ui/SectionReveal";
 export const ResumeSection = () => {
   const stats = [
     { 
-      label: "Talking-Head Videos", 
+      label: "Videos edited",
       value: "70+", 
       context: "Created at DigiChowk",
       icon: Video,
     },
     { 
-      label: "First-Prize Wins", 
+      label: "First prizes",
       value: "2", 
       context: "College-level video editing competitions",
       icon: Trophy,
     },
     { 
-      label: "Expected Graduation", 
+      label: "Graduation",
       value: "2027", 
       context: "B.Tech, Electrical Engineering",
       icon: GraduationCap,
@@ -49,10 +49,10 @@ export const ResumeSection = () => {
                 </TextScramble>
               </div>
               <h2 className="text-5xl md:text-7xl font-serif text-white tracking-tight leading-[1.1]">
-                AT A <span className="text-white/30 italic">GLANCE</span>
+                Experience
               </h2>
               <p className="text-white/40 text-lg leading-relaxed">
-                A snapshot of my experience, creative achievements, and academic background. Download my resume for the complete overview.
+                Download my resume for roles, dates, and education.
               </p>
               <div className="flex justify-center lg:justify-start mt-4">
                 <a 

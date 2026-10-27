@@ -14,10 +14,10 @@ interface FeaturedVideo {
 
 const featuredVideos: FeaturedVideo[] = [
   { id: "showreel-c_0GeIyvwdM", title: "Showreel", category: "SHOWREEL", videoId: "c_0GeIyvwdM" },
-  { id: "story-SPQJ5s6bWyk", title: "Storytelling 01", category: "AI STORYTELLING", videoId: "SPQJ5s6bWyk" },
-  { id: "story-qF2oUtdswVI", title: "Storytelling 02", category: "AI STORYTELLING", videoId: "qF2oUtdswVI" },
-  { id: "microdrama-ONJkfWwlXg4", title: "Microdrama 01", category: "AI MICRODRAMAS", videoId: "ONJkfWwlXg4" },
-  { id: "microdrama-w4eaCtA0yxc", title: "Microdrama 02", category: "AI MICRODRAMAS", videoId: "w4eaCtA0yxc" },
+  { id: "story-SPQJ5s6bWyk", title: "Story 01", category: "AI stories", videoId: "SPQJ5s6bWyk" },
+  { id: "story-qF2oUtdswVI", title: "Story 02", category: "AI stories", videoId: "qF2oUtdswVI" },
+  { id: "microdrama-ONJkfWwlXg4", title: "Microdrama 01", category: "Short films", videoId: "ONJkfWwlXg4" },
+  { id: "microdrama-w4eaCtA0yxc", title: "Microdrama 02", category: "Short films", videoId: "w4eaCtA0yxc" },
 ];
 
 export const MacbookShowcase = () => {

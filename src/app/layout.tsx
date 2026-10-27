@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, DM_Serif_Display, Geist_Mono } from "next/font/google";
+import { Roboto } from "next/font/google";
 
-const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" });
-const dmSerif = DM_Serif_Display({ weight: "400", subsets: ["latin"], variable: "--font-dm-serif" });
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
+const roboto = Roboto({ subsets: ["latin"], weight: ["300", "400", "500", "700"], variable: "--font-roboto" });
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -18,10 +16,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: 'Abhishek Kumar | Video Editor & Graphic Designer',
+    default: 'Abhishek Kumar | Video Editor and Graphic Designer',
     template: '%s | Abhishek Kumar'
   },
-  description: "Explore Abhishek Kumar's work in video editing, AI video ads, motion graphics, talking-head content, and graphic design. Based in Gorakhpur, India.",
+  description: "Video editor and graphic designer in Gorakhpur, India. View selected work in video editing, advertising, motion graphics, and design.",
   keywords: [
     'Abhishek Kumar', 
     'Video Editor', 
@@ -38,8 +36,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Abhishek Kumar — Video Editor & Graphic Designer',
-    description: 'Compelling visual stories through video editing, AI-assisted creation, motion graphics, and design.',
+    title: 'Abhishek Kumar | Video Editor and Graphic Designer',
+    description: 'Video editing, advertising, motion graphics, and graphic design by Abhishek Kumar.',
     siteName: 'Abhishek Kumar',
     images: [
       {
@@ -54,8 +52,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Abhishek Kumar — Video Editor & Graphic Designer',
-    description: 'Compelling visual stories through video editing, AI-assisted creation, motion graphics, and design.',
+    title: 'Abhishek Kumar | Video Editor and Graphic Designer',
+    description: 'Video editing, advertising, motion graphics, and graphic design by Abhishek Kumar.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -83,7 +81,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${dmSans.variable} ${dmSerif.variable} ${geistMono.variable}`}
+      className={`dark ${roboto.variable}`}
       suppressHydrationWarning
     >
       <body suppressHydrationWarning>

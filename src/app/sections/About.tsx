@@ -15,40 +15,40 @@ export const About = () => {
     {
       title: "Tools",
       skills: [
-        { name: "Adobe After Effects", desc: "Motion graphics, visual effects, and dynamic brand content" },
-        { name: "Adobe Premiere Pro", desc: "Primary editor for cinematic commercial and video editing" },
-        { name: "Adobe Photoshop", desc: "Compositing, retouching, and visual asset creation" },
-        { name: "Canva", desc: "Quick social media assets and layout design" },
+        { name: "Adobe After Effects", desc: "Motion graphics and visual effects for video" },
+        { name: "Adobe Premiere Pro", desc: "Video editing and finishing" },
+        { name: "Adobe Photoshop", desc: "Compositing, retouching, and campaign visuals" },
+        { name: "Canva", desc: "Social media graphics and layouts" },
       ]
     },
     {
       title: "AI Tools",
       skills: [
-        { name: "Veo 3", desc: "High-fidelity AI video generation" },
-        { name: "Nano Banana", desc: "AI video creation and motion design" },
-        { name: "Runway", desc: "Text-to-video synthesis and generative video" },
-        { name: "Higgsfield AI", desc: "AI video generation for brand storytelling" },
-        { name: "ChatGPT", desc: "Scriptwriting, creative concepts, and hooks" },
-        { name: "ElevenLabs", desc: "AI voiceover and voice synthesis" },
-        { name: "OpenArt", desc: "AI visual concept generation and ideation" },
+        { name: "Veo 3", desc: "Generate video clips from prompts" },
+        { name: "Nano Banana", desc: "Generate and edit images" },
+        { name: "Runway", desc: "Generative video tools" },
+        { name: "Higgsfield AI", desc: "AI video generation" },
+        { name: "ChatGPT", desc: "Draft scripts, ideas, and ad hooks" },
+        { name: "ElevenLabs", desc: "AI voice and voiceover tools" },
+        { name: "OpenArt", desc: "Generate images and gather visual references" },
       ]
     },
     {
-      title: "Creative Skills",
+      title: "Skills",
       skills: [
-        { name: "Storytelling", desc: "Narrative-driven visual content and brand films" },
-        { name: "Color Grading", desc: "Applying professional cinematic colour to raw footages" },
-        { name: "Typography & Design", desc: "Kinetic typography and layout design" },
-        { name: "Speed Ramping", desc: "Dynamic temporal effects for high-impact editing" },
+        { name: "Storytelling", desc: "Arrange shots around a clear idea" },
+        { name: "Color Grading", desc: "Adjust color and tone to suit the footage" },
+        { name: "Typography & Design", desc: "Type layouts and animated text" },
+        { name: "Speed Ramping", desc: "Change clip speed to shape the pacing" },
       ]
     },
     {
       title: "Editing",
       skills: [
-        { name: "3D Camera", desc: "Virtual camera movements and scene tracking" },
-        { name: "Motion Graphics", desc: "Animated titles and dynamic ad pieces" },
-        { name: "Audio Mixing", desc: "Cinematic sound design and audio engineering" },
-        { name: "Rotoscoping", desc: "Precise subject isolation and masking" }
+        { name: "3D Camera", desc: "Camera moves and tracking in 3D scenes" },
+        { name: "Motion Graphics", desc: "Animated text, shapes, and titles" },
+        { name: "Audio Mixing", desc: "Balance dialogue, music, and effects" },
+        { name: "Rotoscoping", desc: "Mask a moving subject frame by frame" }
       ]
     }
   ];
@@ -59,28 +59,28 @@ export const About = () => {
       company: "FRND", 
       period: "Mar 2026 - Present",
       location: "Bangalore, Karnataka",
-      desc: "Develop AI-generated video advertisements for Meta, Google Ads, and FRND's social media channels. Use advanced AI tools to strengthen creative quality, audience engagement, and visual storytelling."
+      desc: "Make AI-generated video ads for FRND's Meta and Google campaigns and social channels."
     },
     { 
       role: "Video Editor", 
       company: "Pixelo Digital", 
       period: "Oct 2025 - Dec 2025",
       location: "Navi Mumbai",
-      desc: "Designed graphics for campaigns, social media posts, presentations, and branding materials."
+      desc: "Designed campaign graphics, social posts, presentations, and brand materials."
     },
     { 
       role: "Video Editor Intern", 
       company: "DigiChowk", 
       period: "Aug 2025 - Sep 2025",
       location: "Delhi",
-      desc: "Created 70+ talking-head videos for social media using advanced editing tools, with a focus on creative quality and audience engagement."
+      desc: "Edited more than 70 talking-head videos for social media."
     },
     { 
-      role: "Freelance Creative Work", 
+      role: "Freelance video editor",
       company: "Freelancing", 
       period: "2023 - 2024",
       location: null,
-      desc: "Collaborated with content creators and emerging startups on ad campaigns, promotional videos, and reels designed to build reach and meaningful engagement."
+      desc: "Edited ads, promotional videos, and Reels for creators and startups."
     },
   ];
 
@@ -95,7 +95,7 @@ export const About = () => {
         {/* Section Header */}
         <SectionReveal variant="fade-up" className="flex justify-center mb-10">
           <p className="text-white/40 text-center max-w-md text-base font-medium">
-            A closer look at my background, creative skills, and approach to visual storytelling.
+            Video editing, design, and the work behind each project.
           </p>
         </SectionReveal>
 
@@ -135,7 +135,7 @@ export const About = () => {
                     className="text-white/40"
                   />
                 </h3>
-                <p className="text-white/40 text-base">Video Editor &amp; Graphic Designer based in India.</p>
+                <p className="text-white/40 text-base">Video editor and graphic designer in Gorakhpur, India.</p>
               </div>
 
               {/* Categorized Skills Grid */}
@@ -199,13 +199,11 @@ export const About = () => {
               {/* Bio */}
               <div className="flex flex-col gap-6">
                 <h3 className="text-3xl md:text-5xl font-serif text-white tracking-tight flex flex-wrap items-center gap-x-2 md:gap-x-3 gap-y-1 md:gap-y-2">
-                  <RandomLetterSwapPingPong label="Turning Ideas" />
-                  <span>Into Compelling</span>
-                  <span className="text-white/40 italic">Visual Stories</span>
+                  <RandomLetterSwapPingPong label="What I do" />
                 </h3>
                 <div className="flex flex-col gap-4">
                   <TextEffect preset="blur" className="text-base md:text-lg text-white/70 leading-relaxed font-sans">
-                    I&apos;m a creative video editor driven by storytelling and the power of visuals. I combine technical precision with a strong sense of pacing to craft cinematic narratives, polished talking-head content, and conversion-focused ad creatives. My workflow brings together professional editing tools and AI-generated assets to improve production speed while maintaining visual consistency, realism, and creative quality.
+                    I edit talking-head videos, social clips, and ads. I also design campaign graphics and use AI tools when a project needs generated footage or images.
                   </TextEffect>
                 </div>
 
@@ -213,9 +211,9 @@ export const About = () => {
 
                 {/* Experience Header */}
                 <div className="flex flex-col gap-2">
-                  <h4 className="text-2xl font-serif text-white tracking-tight">My Creative Journey</h4>
+                  <h4 className="text-2xl font-serif text-white tracking-tight">Experience</h4>
                   <p className="text-sm text-white/40">
-                    Experience across AI video advertising, social content, graphic design, and freelance creative projects.
+                    My work includes video ads at FRND, graphics at Pixelo Digital, and social videos at DigiChowk.
                   </p>
                 </div>
 
