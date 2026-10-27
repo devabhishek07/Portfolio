@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUp, Linkedin, Globe, Mail } from "lucide-react";
+import { ArrowUp, Linkedin, Mail } from "lucide-react";
 import { RandomLetterSwapPingPong } from "@/components/ui/random-letter-swap";
 import { scrollToTarget } from "@/lib/scroll";
+import { Instagram, XLogo } from "@/components/ui/Icons";
 
 type SocialLinkItem = {
   name: string;
@@ -13,7 +14,8 @@ type SocialLinkItem = {
 
 const socialLinksData: SocialLinkItem[] = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/abhishek-kumar-b77b91288", icon: Linkedin },
-  { name: "Portfolio", href: "https://abhishek-dev7.vercel.app/", icon: Globe },
+  { name: "X", href: "https://x.com/Abhishekdev07", icon: XLogo },
+  { name: "Instagram", href: "https://www.instagram.com/abhishek._.075?xtok=dDRuMDhqMDVwYzg3", icon: Instagram },
   { name: "Email", href: "mailto:abhishekkumardev57@gmail.com", icon: Mail },
 ];
 
@@ -82,8 +84,11 @@ export function Footer() {
             © {new Date().getFullYear()} Abhishek Kumar. All rights reserved.
           </p>
 
-          <p className="text-xs text-white/20">
-            Designed &amp; Developed by Aditya Pandey
+          <p className="text-xs text-white/40">
+            Made with <span role="img" aria-label="love">❤️</span> by{" "}
+            <a href="https://www.instagram.com/pandey.aditya._/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors font-medium">
+              Aditya Pandey
+            </a>
           </p>
 
           <div className="flex items-center justify-center md:justify-end">

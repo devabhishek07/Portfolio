@@ -79,9 +79,9 @@ export const Hero = () => {
               preset="blur"
               per="word"
               delay={0.8}
-              className="text-base md:text-xl text-white/60 max-w-xl leading-relaxed"
+              className="text-base md:text-xl text-white/60 max-w-2xl leading-relaxed text-justify"
             >
-              I turn raw footage, ideas, and AI-generated visuals into compelling stories. From cinematic edits and polished talking-head videos to conversion-focused ads, I create content built for modern digital platforms.
+              I shape raw footage and AI visuals into clear, engaging stories—from cinematic edits and talking-head videos to ads built to perform across digital platforms.
             </TextEffect>
           </div>
 
@@ -145,6 +145,18 @@ export const Hero = () => {
             <h4 className="text-white font-serif text-lg mb-2">AI-Powered Ad Creatives</h4>
             <p className="text-white/70 text-xs leading-relaxed">
               Developed video advertisements for FRND across Meta, Google Ads, and social media.
+            </p>
+          </motion.div>
+
+          {/* Card 3 */}
+          <motion.div
+            animate={{ y: [8, -8, 8], rotate: [-3, -3, -3] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[38%] left-0 w-64 p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md z-10"
+          >
+            <h4 className="text-white font-serif text-lg mb-2">DTC Ad Creative</h4>
+            <p className="text-white/70 text-xs leading-relaxed">
+              Product-focused video ads shaped for strong hooks, clear benefits, and action.
             </p>
           </motion.div>
         </div>

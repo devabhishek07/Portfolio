@@ -13,7 +13,6 @@ export const viewport: Viewport = {
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { InteractiveBackground } from "@/components/ui/InteractiveBackground";
-import { siteConfig } from "@/lib/constants";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import "./globals.css";
 
@@ -33,16 +32,14 @@ export const metadata: Metadata = {
     'After Effects Artist', 
     'Premiere Pro Editor'
   ],
-  authors: [{ name: 'Abhishek Kumar', url: 'https://abhishek-dev7.vercel.app/' }],
+  authors: [{ name: 'Abhishek Kumar' }],
   creator: 'Abhishek Kumar',
-  metadataBase: new URL('https://abhishek-dev7.vercel.app/'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Abhishek Kumar — Video Editor & Graphic Designer',
     description: 'Compelling visual stories through video editing, AI-assisted creation, motion graphics, and design.',
-    url: 'https://abhishek-dev7.vercel.app/',
     siteName: 'Abhishek Kumar',
     images: [
       {

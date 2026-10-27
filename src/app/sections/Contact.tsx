@@ -2,14 +2,12 @@
 
 import { useState } from "react";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { Mail, Phone, MapPin, Send, CheckCircle2, Loader2, Globe, Linkedin } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { RandomLetterSwapPingPong } from "@/components/ui/random-letter-swap";
+import { Instagram, Linkedin, XLogo } from "@/components/ui/Icons";
 
 export function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -99,13 +97,22 @@ export function Contact() {
                   <span>LinkedIn</span>
                 </a>
                 <a 
-                  href="https://abhishek-dev7.vercel.app/"
+                  href="https://x.com/Abhishekdev07"
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/80 hover:bg-white hover:text-black hover:border-white transition-all flex items-center gap-2"
                 >
-                  <Globe className="w-4 h-4" />
-                  <span>Portfolio</span>
+                  <XLogo className="w-4 h-4" />
+                  <span>X</span>
+                </a>
+                <a
+                  href="https://www.instagram.com/abhishek._.075?xtok=dDRuMDhqMDVwYzg3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/80 hover:bg-white hover:text-black hover:border-white transition-all flex items-center gap-2"
+                >
+                  <Instagram className="w-4 h-4" />
+                  <span>Instagram</span>
                 </a>
               </div>
             </div>
@@ -166,6 +173,7 @@ export function Contact() {
                   />
                 </div>
 
+                <p className="text-xs text-white/40">Your email app will open with the message ready to send.</p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-2">
                   <LiquidButton 
                     type="submit" 

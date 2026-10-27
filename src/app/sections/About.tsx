@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe, Linkedin, Mail, GraduationCap } from "lucide-react";
+import { Linkedin, Mail, GraduationCap } from "lucide-react";
+import { Instagram, XLogo } from "@/components/ui/Icons";
 import Image from "next/image";
 import { GlowCard } from "@/components/ui/spotlight-card";
 import { RandomLetterSwapForward, RandomLetterSwapPingPong } from "@/components/ui/random-letter-swap";
@@ -170,7 +171,8 @@ export const About = () => {
               <div className="mt-auto flex items-center gap-6">
                 {[
                   { Icon: Linkedin, href: "https://www.linkedin.com/in/abhishek-kumar-b77b91288", label: "LinkedIn" },
-                  { Icon: Globe, href: "https://abhishek-dev7.vercel.app/", label: "Portfolio" },
+                  { Icon: XLogo, href: "https://x.com/Abhishekdev07", label: "X" },
+                  { Icon: Instagram, href: "https://www.instagram.com/abhishek._.075?xtok=dDRuMDhqMDVwYzg3", label: "Instagram" },
                   { Icon: Mail, href: "mailto:abhishekkumardev57@gmail.com", label: "Email" },
                 ].map(({Icon, href, label}, i) => (
                   <motion.a

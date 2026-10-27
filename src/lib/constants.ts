@@ -6,7 +6,6 @@ export const siteConfig = {
   defaultTitle: "Abhishek Kumar — Video Editor & Graphic Designer",
   description:
     "Video Editor & Graphic Designer creating engaging stories through editing, motion, design, and AI-assisted visuals. Based in Gorakhpur, India.",
-  url: "https://abhishek-dev7.vercel.app/",
   ogImage: "/og-image.png",
   twitterHandle: "",
 };
@@ -24,11 +23,8 @@ export const socialLinks: SocialLink[] = [
     url: "https://www.linkedin.com/in/abhishek-kumar-b77b91288",
     icon: "Linkedin",
   },
-  {
-    name: "Portfolio",
-    url: "https://abhishek-dev7.vercel.app/",
-    icon: "Globe",
-  },
+  { name: "X", url: "https://x.com/Abhishekdev07", icon: "X" },
+  { name: "Instagram", url: "https://www.instagram.com/abhishek._.075?xtok=dDRuMDhqMDVwYzg3", icon: "Instagram" },
   {
     name: "Email",
     url: "mailto:abhishekkumardev57@gmail.com",

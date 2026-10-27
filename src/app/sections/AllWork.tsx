@@ -366,7 +366,7 @@ const AllWork = () => {
         <SectionReveal variant="fade-up" className="flex flex-col items-center text-center gap-4 mb-12 md:mb-14">
           <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 w-fit">
             <span className="w-2 h-2 rounded-full bg-white/40 animate-pulse" />
-            <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/40">Portfolio</span>
+            <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/40">Selected Work</span>
           </div>
           <h2 className="text-5xl md:text-7xl font-serif text-white tracking-tight flex items-center gap-x-3 md:gap-x-4">
             <RandomLetterSwapPingPong label="Selected" />
