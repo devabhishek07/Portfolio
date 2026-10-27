@@ -86,10 +86,10 @@ export const ResumeSection = () => {
                     <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/40 group-hover:text-white group-hover:bg-white/10 transition-all duration-500">
                       <stat.icon className="w-6 h-6" />
                     </div>
-                    <div className="flex flex-col items-center gap-1">
+                    <div className="flex w-full min-w-0 flex-col items-center gap-1">
                       <span className="text-4xl font-bold text-white tracking-tight">{stat.value}</span>
                       <TextScramble 
-                        className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold whitespace-nowrap"
+                        className="w-full max-w-full whitespace-normal break-words text-center text-[9px] md:text-[10px] uppercase leading-tight tracking-[0.12em] sm:tracking-[0.16em] text-white/40 font-bold"
                         duration={1.2}
                       >
                         {stat.label}
