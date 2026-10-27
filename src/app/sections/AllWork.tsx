@@ -356,40 +356,29 @@ const AllWork = () => {
   }, [selectedVideo]);
 
   return (
-    <section id="projects" className="projects-section pt-40 pb-32 bg-[#080808] relative overflow-hidden font-sans">
+    <section id="projects" className="projects-section pt-28 pb-24 md:pt-36 md:pb-28 bg-[#080808] relative overflow-hidden font-sans">
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-500/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-500/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section header */}
-        <SectionReveal variant="fade-up" className="flex flex-col items-center text-center gap-6 mb-16">
+        <SectionReveal variant="fade-up" className="flex flex-col items-center text-center gap-4 mb-12 md:mb-14">
           <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 w-fit">
             <span className="w-2 h-2 rounded-full bg-white/40 animate-pulse" />
             <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/40">Portfolio</span>
           </div>
-          <h2 className="text-6xl md:text-8xl font-serif text-white tracking-tight flex items-center gap-x-4">
+          <h2 className="text-5xl md:text-7xl font-serif text-white tracking-tight flex items-center gap-x-3 md:gap-x-4">
             <RandomLetterSwapPingPong label="Selected" />
             <RandomLetterSwapPingPong label="Work" className="text-white/40 italic" />
           </h2>
           <p className="text-white/50 text-base md:text-lg max-w-xl">
             Explore my work across talking-head videos, event promos, AI-powered advertising, and visual design.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
-            <a 
-              href="https://abhishek-dev7.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 text-sm font-medium text-white/80 hover:bg-white hover:text-black hover:border-white transition-all flex items-center gap-2"
-            >
-              <span>View Full Portfolio</span>
-              <span className="text-xs">↗</span>
-            </a>
-          </div>
         </SectionReveal>
 
         {/* Verified Projects Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-16 md:mb-20 max-w-4xl mx-auto">
           <div className="p-7 rounded-[2rem] border border-white/10 bg-[#111] flex flex-col justify-between gap-4">
             <div>
               <div className="flex items-center justify-between gap-2 mb-2">
@@ -440,7 +429,7 @@ const AllWork = () => {
         </div>
 
         {/* Featured Showreel — MacBook Showcase */}
-        <SectionReveal variant="fade-up" className="flex flex-col items-center text-center gap-4 mb-16">
+        <SectionReveal variant="fade-up" className="flex flex-col items-center text-center gap-4 mb-10 md:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -479,7 +468,7 @@ const AllWork = () => {
             key={category.index} 
             id={`work-${category.name.toLowerCase().replace(/\s+/g, '-')}`} 
             variant="fade-up"
-            className="mb-32 relative scroll-mt-28"
+            className="mb-24 md:mb-28 relative scroll-mt-28"
           >
             {/* Category Header */}
             <div className="flex flex-col gap-4 mb-12">
@@ -506,7 +495,7 @@ const AllWork = () => {
               const squareItems = sub.items.filter(item => (item as any).isSquare);
 
               return (
-                <div key={sub.name} id={`work-sub-${workSlug(sub.name)}`} className={cn(sIdx === 0 ? "mt-0" : "mt-24", "scroll-mt-28")}>
+                <div key={sub.name} id={`work-sub-${workSlug(sub.name)}`} className={cn(sIdx === 0 ? "mt-0" : "mt-20 md:mt-24", "scroll-mt-28")}>
                   {sub.name !== "Advertisements" && (
                     <div className="flex items-center gap-4 mb-8">
                       <h4 className="text-xl md:text-2xl font-serif text-white/60 tracking-tight italic">

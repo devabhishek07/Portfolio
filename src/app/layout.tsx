@@ -1,4 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import { DM_Sans, DM_Serif_Display, Geist_Mono } from "next/font/google";
+
+const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" });
+const dmSerif = DM_Serif_Display({ weight: "400", subsets: ["latin"], variable: "--font-dm-serif" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -81,7 +86,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="dark"
+      className={`dark ${dmSans.variable} ${dmSerif.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <body suppressHydrationWarning>

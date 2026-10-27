@@ -14,6 +14,10 @@ interface FeaturedVideo {
 
 const featuredVideos: FeaturedVideo[] = [
   { id: "showreel-c_0GeIyvwdM", title: "Showreel", category: "SHOWREEL", videoId: "c_0GeIyvwdM" },
+  { id: "story-SPQJ5s6bWyk", title: "Storytelling 01", category: "AI STORYTELLING", videoId: "SPQJ5s6bWyk" },
+  { id: "story-qF2oUtdswVI", title: "Storytelling 02", category: "AI STORYTELLING", videoId: "qF2oUtdswVI" },
+  { id: "microdrama-ONJkfWwlXg4", title: "Microdrama 01", category: "AI MICRODRAMAS", videoId: "ONJkfWwlXg4" },
+  { id: "microdrama-w4eaCtA0yxc", title: "Microdrama 02", category: "AI MICRODRAMAS", videoId: "w4eaCtA0yxc" },
 ];
 
 export const MacbookShowcase = () => {
@@ -148,14 +152,25 @@ export const MacbookShowcase = () => {
   const goNext = () => goTo(activeIndex + 1);
 
   return (
-    <div className="w-full flex flex-col items-center mb-24 relative">
+    <div className="w-full flex flex-col items-center mb-20 md:mb-24 relative">
       {/* Ambient glow behind laptop */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-white/[0.02] blur-[100px] rounded-full pointer-events-none" />
 
       <div className="relative w-full max-w-[960px] mx-auto flex items-center justify-center">
-        {/* Left Arrow — hidden: single video */}
-
-        {/* Right Arrow — hidden: single video */}
+        <button
+          onClick={goPrev}
+          aria-label="Previous featured video"
+          className="absolute left-2 md:-left-14 top-1/2 z-30 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white/75 backdrop-blur-md transition hover:bg-white hover:text-black md:flex"
+        >
+          <ChevronLeft size={20} />
+        </button>
+        <button
+          onClick={goNext}
+          aria-label="Next featured video"
+          className="absolute right-2 md:-right-14 top-1/2 z-30 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white/75 backdrop-blur-md transition hover:bg-white hover:text-black md:flex"
+        >
+          <ChevronRight size={20} />
+        </button>
 
         {/* MacBook Frame */}
         <div
@@ -331,7 +346,25 @@ export const MacbookShowcase = () => {
         </div>
       </div>
 
-      {/* Thumbnail Strip — hidden: single video */}
+      <div className="relative z-30 mt-3 grid w-full max-w-4xl grid-cols-2 gap-3 px-5 sm:grid-cols-3 md:grid-cols-5 md:gap-4 md:px-0">
+        {featuredVideos.map((video, index) => (
+          <button
+            key={video.id}
+            onClick={() => goTo(index)}
+            aria-pressed={activeIndex === index}
+            className={`group overflow-hidden rounded-xl border text-left transition ${activeIndex === index ? "border-white/60 bg-white/[0.08]" : "border-white/10 bg-white/[0.025] hover:border-white/30"}`}
+          >
+            <img
+              src={ytThumb(video.videoId, "hqdefault")}
+              alt=""
+              className="aspect-video w-full object-cover opacity-75 transition group-hover:opacity-100"
+              loading="lazy"
+            />
+            <span className="block truncate px-3 pt-2 text-[9px] font-mono tracking-[0.12em] text-white/35">{video.category}</span>
+            <span className="block truncate px-3 pb-2 text-xs font-medium text-white/80">{video.title}</span>
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
