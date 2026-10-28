@@ -39,10 +39,10 @@ export const Testimonials = () => {
               <div className="flex flex-col gap-4">
                 <h2 className="text-4xl md:text-6xl font-serif text-white tracking-tight flex flex-wrap gap-x-3 md:gap-x-4">
                   <RandomLetterSwapPingPong label="Awards" />
-                  <RandomLetterSwapPingPong label="and tools" className="text-white/40" />
+                  <RandomLetterSwapPingPong label="& tools" className="text-white/40" />
                 </h2>
                 <p className="text-white/40 text-lg leading-relaxed">
-                  Two first-place awards, plus the tools I use to plan and produce video and design work.
+                  Two first-place wins and the tools I use to shape video and visual content.
                 </p>
               </div>
             </div>

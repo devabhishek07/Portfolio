@@ -14,11 +14,11 @@ export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "Project brief",
+    subject: "New project inquiry",
     message: "",
   });
 
-  const mailtoUrl = `mailto:abhishekkumardev57@gmail.com?subject=${encodeURIComponent(formData.subject || "Project brief")}&body=${encodeURIComponent(`Hi Abhishek,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+  const mailtoUrl = `mailto:abhishekkumardev57@gmail.com?subject=${encodeURIComponent(formData.subject || "New project inquiry")}&body=${encodeURIComponent(`Hi Abhishek,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,7 +41,7 @@ export function Contact() {
       }
 
       setSubmissionStatus("success");
-      setFormData({ name: "", email: "", subject: "Project brief", message: "" });
+      setFormData({ name: "", email: "", subject: "New project inquiry", message: "" });
     } catch {
       setSubmissionStatus("error");
     }
@@ -65,11 +65,12 @@ export function Contact() {
                 </span>
               </div>
               <h2 className="text-5xl md:text-6xl font-serif text-white leading-tight flex flex-wrap gap-x-3 gap-y-2">
-                <RandomLetterSwapPingPong label="Start a" />
-                <RandomLetterSwapPingPong label="project" className="text-white/40" />
+                <RandomLetterSwapPingPong label="Let’s build" />
+                <RandomLetterSwapPingPong label="your next" className="text-white/40" />
+                <RandomLetterSwapPingPong label="video" className="text-white/40" />
               </h2>
               <p className="text-lg text-white/60 leading-relaxed max-w-md font-sans">
-                Have a video or campaign in mind? Share the brief, deliverables, and timeline. I&apos;ll reply by email to discuss next steps.
+                Have a project in mind? Tell me what you’re making, who it’s for, and when you need it. I’m available for new video and design projects.
               </p>
             </div>
 
@@ -173,7 +174,7 @@ export function Contact() {
                     id="contact-subject"
                     name="subject"
                     type="text" 
-                    placeholder="Project brief"
+                    placeholder="New project inquiry"
                     className="form-input w-full px-5 py-4 rounded-2xl bg-white/[0.03] border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-white/30 transition-all text-sm"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -206,7 +207,7 @@ export function Contact() {
                     disabled={submissionStatus === "sending"}
                     className="flex-1 h-14 shadow-[0_20px_40px_rgba(255,255,255,0.1)]"
                   >
-                    {submissionStatus === "sending" ? "Sending…" : submissionStatus === "success" ? "Message Sent" : "Send project brief"}
+                    {submissionStatus === "sending" ? "Sending…" : submissionStatus === "success" ? "Message Sent" : "Send message"}
                     {submissionStatus !== "success" && <Send className="h-4 w-4 ml-2" />}
                   </LiquidButton>
                   <a 

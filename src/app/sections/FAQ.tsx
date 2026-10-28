@@ -13,24 +13,28 @@ export const FAQ = () => {
 
   const faqs = [
     {
-      question: "What can you help with?",
-      answer: "I edit presenter-led videos, Reels, promotional videos, and paid ads. I also create motion graphics and campaign design."
+      question: "What services do you offer?",
+      answer: "I edit presenter-led videos, Reels, promotional videos, and paid ads. I also create AI-assisted videos, motion graphics, and campaign design."
     },
     {
-      question: "What should I include in a project brief?",
-      answer: "Share the goal, audience, deliverables, reference links, and deadline. If you already have footage or brand assets, mention those too."
+      question: "How do I start working with you?",
+      answer: "Send a short brief with your audience, deliverables, references, and deadline. Mention any footage or brand assets you already have, and I’ll reply to discuss scope and next steps."
     },
     {
       question: "Which editing and design tools do you use?",
       answer: "My main tools are Adobe After Effects, Premiere Pro, Photoshop, and Canva. The project and deliverables guide the setup."
     },
     {
-      question: "How do AI tools fit into your process?",
-      answer: "I use Veo 3, Nano Banana, Runway, Higgsfield AI, ChatGPT, ElevenLabs, and OpenArt when generated footage, imagery, voice, or ideas suit the brief."
+      question: "What AI tools do you use?",
+      answer: "I work with Veo 3, Nano Banana, Runway, Higgsfield AI, ChatGPT, ElevenLabs, and OpenArt. I choose tools based on the brief and the assets the project needs."
     },
     {
-      question: "What experience do you bring?",
-      answer: "My work includes campaign ads for FRND, more than 70 social videos for DigiChowk, editing for Askul Global, design work for Pixelo Digital, and the ELECTRA 2024 teaser."
+      question: "How long does a project take?",
+      answer: "Turnaround depends on the format, length, and assets. Once we’ve discussed the scope, we can agree on a schedule before work begins."
+    },
+    {
+      question: "Do you provide revisions?",
+      answer: "Revision rounds are agreed as part of the project scope. I’ll confirm the details with you before work begins."
     }
   ];
 
@@ -46,11 +50,12 @@ export const FAQ = () => {
                 <span className="text-[10px] text-white">⊙</span>
                 <span className="text-xs font-medium uppercase tracking-widest text-white/80">FAQ</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-serif text-white flex flex-wrap gap-x-4">
-                <RandomLetterSwapPingPong label="Frequently asked questions" />
+              <h2 className="max-w-full text-4xl md:text-6xl font-serif text-white flex flex-wrap gap-x-4 gap-y-1">
+                <RandomLetterSwapPingPong label="Questions" />
+                <RandomLetterSwapPingPong label="& answers" className="text-white/50" />
               </h2>
               <p className="text-white/40 text-lg leading-relaxed">
-                A few details about the work, tools, and getting started.
+                Helpful details before we start a project.
               </p>
             </div>
 

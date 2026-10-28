@@ -360,8 +360,8 @@ export const MacbookShowcase = () => {
               className="aspect-video w-full object-cover opacity-75 transition group-hover:opacity-100"
               loading="lazy"
             />
-            <span className="block truncate px-3 pt-2 text-[9px] font-mono tracking-[0.12em] text-white/35">{video.category}</span>
-            <span className="block truncate px-3 pb-2 text-xs font-medium text-white/80">{video.title}</span>
+            <span className="block whitespace-normal break-words px-3 pt-2 text-[9px] font-mono leading-snug tracking-[0.08em] text-white/45">{video.category}</span>
+            <span className="block whitespace-normal break-words px-3 pb-2 text-xs font-medium leading-snug text-white/80">{video.title}</span>
           </button>
         ))}
       </div>

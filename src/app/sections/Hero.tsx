@@ -38,18 +38,18 @@ export const Hero = () => {
           >
             <span className="text-[10px] text-white shrink-0">⊙</span>
             <TextScramble 
-              className="text-[9px] md:text-xs font-medium uppercase tracking-widest text-white/80 whitespace-nowrap overflow-hidden text-ellipsis"
+              className="text-[9px] md:text-xs font-medium uppercase tracking-[0.12em] text-white/80 whitespace-normal"
               duration={1.5}
               characterSet="01"
             >
-              Video Editor | AI Video Creator | Motion Graphics | Graphic Designer
+              AI Visual Creator | Motion Artist | Video Editor | Graphic Designer
             </TextScramble>
           </motion.div>
 
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4">
-              <h1 className="text-4xl md:text-7xl font-serif tracking-tight leading-tight flex items-center gap-x-2 md:gap-x-4 flex-wrap">
-                <div className="flex items-center gap-x-2 md:gap-x-4">
+              <h1 className="max-w-full text-4xl md:text-7xl font-serif tracking-tight leading-tight flex flex-wrap items-center gap-x-2 md:gap-x-4">
+                <div className="flex max-w-full flex-wrap items-center gap-x-2 md:gap-x-4">
                   <RandomLetterSwapPingPong
                     label="Abhishek"
                     className="text-white"
@@ -81,7 +81,7 @@ export const Hero = () => {
               delay={0.8}
               className="text-base md:text-xl text-white/60 max-w-2xl leading-relaxed text-justify"
             >
-              I help brands and creators turn raw footage and campaign ideas into polished videos, ads, and visuals. From social edits to AI-assisted content, each piece is shaped for its audience and platform.
+              I’m a video editor and graphic designer working across social ads, presenter-led videos, Reels, and AI-assisted visuals. I bring the edit, sound, captions, and motion together to keep the message clear and suited to its platform.
             </TextEffect>
           </div>
 
@@ -95,7 +95,7 @@ export const Hero = () => {
               onClick={() => scrollToTarget('projects')}
               size="lg"
             >
-              Explore selected work
+              See all projects
             </LiquidButton>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -103,7 +103,7 @@ export const Hero = () => {
               onClick={() => scrollToTarget('contact')}
               className="flex items-center justify-center bg-white text-[#0c0c0c] px-8 h-10 rounded-md text-sm font-semibold hover:bg-white/90 transition-colors"
             >
-              Start a project
+              Contact now
             </motion.button>
           </motion.div>
         </div>

@@ -52,7 +52,7 @@ export const ResumeSection = () => {
                 Resume
               </h2>
               <p className="text-white/40 text-lg leading-relaxed">
-                View my experience, education, and key skills in one place.
+                A quick overview of my experience, awards, and education. Download the resume for the full picture.
               </p>
               <div className="flex justify-center lg:justify-start mt-4">
                 <a 

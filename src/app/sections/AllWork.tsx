@@ -369,12 +369,12 @@ const AllWork = () => {
             <span className="w-2 h-2 rounded-full bg-white/40 animate-pulse" />
             <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/40">Selected projects</span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-serif text-white tracking-tight flex items-center gap-x-3 md:gap-x-4">
+          <h2 className="max-w-full text-4xl md:text-7xl font-serif text-white tracking-tight flex flex-wrap justify-center gap-x-3 md:gap-x-4">
             <RandomLetterSwapPingPong label="Selected" />
             <RandomLetterSwapPingPong label="Work" className="text-white/40 italic" />
           </h2>
           <p className="text-white/50 text-base md:text-lg max-w-xl">
-            Video edits, campaign ads, motion graphics, and design. Browse the work, then get in touch to discuss your brief.
+            A selection of video edits, campaign ads, motion graphics, and design. See how I bring each brief to the screen.
           </p>
         </SectionReveal>
 
@@ -445,16 +445,16 @@ const AllWork = () => {
                 duration={1.2}
                 characterSet="⊹⊡⊞⊟◈◇◆"
               >
-              Featured videos
+              Featured showreel
               </TextScramble>
               <div className="h-[1px] w-8 bg-gradient-to-l from-transparent to-white/20" />
             </div>
-            <h3 className="text-2xl md:text-4xl font-serif text-white tracking-tight flex flex-wrap items-center justify-center gap-x-2 md:gap-x-3">
-              <RandomLetterSwapPingPong label="Watch" className="text-white/90" />
-              <RandomLetterSwapPingPong label="selected work" className="text-white/40" />
+            <h3 className="max-w-full text-xl sm:text-2xl md:text-4xl font-serif text-white tracking-tight flex flex-wrap items-center justify-center gap-x-2 md:gap-x-3">
+              <RandomLetterSwapPingPong label="Click to explore" className="text-white/90" />
+              <RandomLetterSwapPingPong label="my best work" className="text-white/40" />
             </h3>
             <p className="text-sm text-white/30 max-w-md">
-              Select a thumbnail to preview a project.
+              A handpicked mix of edits, ads, and AI-assisted videos. Select a thumbnail to bring that project into focus.
             </p>
           </motion.div>
         </SectionReveal>
@@ -476,8 +476,8 @@ const AllWork = () => {
                   <span className="text-xs font-bold text-white/20 tracking-widest uppercase">0{category.index}</span>
                   <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent" />
                 </div>
-                <div className="flex items-baseline gap-4">
-                  <h3 className="text-4xl md:text-6xl font-serif text-white tracking-tight flex items-center gap-x-3">
+                <div className="flex min-w-0 items-baseline gap-4">
+                  <h3 className="min-w-0 max-w-full text-3xl sm:text-4xl md:text-6xl font-serif text-white tracking-tight flex flex-wrap gap-x-3">
                     <RandomLetterSwapPingPong label={category.name.split(' ')[0]} />
                     {category.name.split(' ').length > 1 && (
                       <RandomLetterSwapPingPong 
@@ -497,11 +497,11 @@ const AllWork = () => {
               return (
                 <div key={sub.name} id={`work-sub-${workSlug(sub.name)}`} className={cn(sIdx === 0 ? "mt-0" : "mt-20 md:mt-24", "scroll-mt-28")}>
                   {sub.name !== "Advertisements" && (
-                    <div className="flex items-center gap-4 mb-8">
-                      <h4 className="text-xl md:text-2xl font-serif text-white/60 tracking-tight italic">
-                        <RandomLetterSwapPingPong label={sub.name} />
+                    <div className="mb-8 flex w-full min-w-0 items-center gap-3 sm:gap-4">
+                      <h4 className="min-w-0 max-w-full text-lg sm:text-xl md:text-2xl font-medium tracking-tight text-white/70">
+                        {sub.name}
                       </h4>
-                      <div className="h-[1px] w-12 bg-white/10" />
+                      <div aria-hidden="true" className="hidden h-px min-w-8 flex-1 bg-white/10 sm:block" />
                     </div>
                   )}
 

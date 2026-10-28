@@ -59,14 +59,15 @@ export const Process = () => {
               duration={1}
               characterSet="01"
             >
-              What I Do
+              How I can help
             </TextScramble>
           </div>
-          <h2 className="text-5xl md:text-7xl font-serif text-white flex flex-wrap justify-center items-center gap-x-3 md:gap-x-4">
-            <RandomLetterSwapPingPong label="Services" />
+          <h2 className="max-w-full text-4xl md:text-7xl font-serif text-white flex flex-wrap justify-center items-center gap-x-3 md:gap-x-4">
+            <RandomLetterSwapPingPong label="Video & motion" />
+            <RandomLetterSwapPingPong label="design" className="text-white/45" />
           </h2>
           <p className="text-white/40 text-lg max-w-md">
-            Video editing and design for social content, paid campaigns, and brand stories.
+            From campaign creative to final polish, I make content for social feeds, paid ads, and brand stories.
           </p>
         </SectionReveal>
 
