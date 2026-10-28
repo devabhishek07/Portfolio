@@ -5,7 +5,7 @@ export const siteConfig = {
   title: "%s | Abhishek Kumar — Video Editor",
   defaultTitle: "Abhishek Kumar — Video Editor and Graphic Designer",
   description:
-    "Video editor and graphic designer in Gorakhpur, India. Selected video, advertising, motion graphics, and design work.",
+    "Video editor and graphic designer creating social videos, campaign ads, motion graphics, and brand visuals. Based in Gorakhpur, India.",
   ogImage: "/og-image.png",
   twitterHandle: "",
 };

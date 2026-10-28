@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     default: 'Abhishek Kumar | Video Editor and Graphic Designer',
     template: '%s | Abhishek Kumar'
   },
-  description: "Video editor and graphic designer in Gorakhpur, India. View selected work in video editing, advertising, motion graphics, and design.",
+  description: "Video editor and graphic designer creating social videos, campaign ads, motion graphics, and brand visuals. Based in Gorakhpur, India.",
   keywords: [
     'Abhishek Kumar', 
     'Video Editor', 
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Abhishek Kumar | Video Editor and Graphic Designer',
-    description: 'Video editing, advertising, motion graphics, and graphic design by Abhishek Kumar.',
+    description: 'Selected video edits, campaign ads, motion graphics, and design by Abhishek Kumar.',
     siteName: 'Abhishek Kumar',
     images: [
       {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Abhishek Kumar | Video Editor and Graphic Designer',
-    description: 'Video editing, advertising, motion graphics, and graphic design by Abhishek Kumar.',
+    description: 'Selected video edits, campaign ads, motion graphics, and design by Abhishek Kumar.',
     images: ['/og-image.png'],
   },
   robots: {

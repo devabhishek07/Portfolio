@@ -213,13 +213,13 @@ const JUMP_GROUPS = [
   {
     label: 'Videos',
     links: [
-      { label: 'DTC Ads', id: `work-sub-${workSlug('DTC Ads')}` },
+      { label: 'DTC campaigns', id: `work-sub-${workSlug('DTC Ads')}` },
       { label: 'AI films & microdramas', id: `work-sub-${workSlug('AI Films & Microdramas')}` },
-      { label: 'AI Storytelling', id: `work-sub-${workSlug('AI Storytelling')}` },
-      { label: 'Cartoon Advertisements', id: `work-sub-${workSlug('Cartoon Advertisements')}` },
-      { label: 'Motion Graphics', id: `work-sub-${workSlug('Motion Graphics')}` },
-      { label: 'Story Explainer', id: `work-sub-${workSlug('Story Explainer')}` },
-      { label: 'Launch Video', id: `work-sub-${workSlug('Launch Video')}` },
+      { label: 'AI storytelling', id: `work-sub-${workSlug('AI Storytelling')}` },
+      { label: 'Animated ads', id: `work-sub-${workSlug('Cartoon Advertisements')}` },
+      { label: 'Motion graphics', id: `work-sub-${workSlug('Motion Graphics')}` },
+      { label: 'Explainer videos', id: `work-sub-${workSlug('Story Explainer')}` },
+      { label: 'Event films', id: `work-sub-${workSlug('Launch Video')}` },
     ],
   },
 ];
@@ -235,7 +235,7 @@ const jumpTo = (id: string) => {
 const WorkJumpNav = () => (
   <nav aria-label="Jump to a work category" className="mb-32 flex flex-col items-center gap-8">
     <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30">
-      Jump to a category
+      Explore a category
     </p>
     <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-0">
       {JUMP_GROUPS.map((group, gIdx) => (
@@ -280,18 +280,19 @@ const AllWork = () => {
         {
           name: "DTC Ads",
           items: [
-            { id: "dtc-NQGkHaMQr0w", title: "DTC ad 01", tag: "DTC Ads", type: "youtube", videoId: "NQGkHaMQr0w", isVertical: true },
-            { id: "dtc-ZaoHmk7s1S8", title: "DTC ad 02", tag: "DTC Ads", type: "youtube", videoId: "ZaoHmk7s1S8", isVertical: true },
-            { id: "dtc-ehvAu9tJiGU", title: "DTC ad 03", tag: "DTC Ads", type: "youtube", videoId: "ehvAu9tJiGU", isVertical: true },
-            { id: "dtc-fqcKu8v7jbI", title: "DTC ad 04", tag: "DTC Ads", type: "youtube", videoId: "fqcKu8v7jbI", isVertical: true },
-            { id: "dtc-dc4KmxCgTSw", title: "DTC ad 05", tag: "DTC Ads", type: "youtube", videoId: "dc4KmxCgTSw", isVertical: true },
+            { id: "dtc-NQGkHaMQr0w", title: "DTC campaign 01", tag: "DTC Ads", type: "youtube", videoId: "NQGkHaMQr0w", isVertical: true },
+            { id: "dtc-ZaoHmk7s1S8", title: "DTC campaign 02", tag: "DTC Ads", type: "youtube", videoId: "ZaoHmk7s1S8", isVertical: true },
+            { id: "dtc-ehvAu9tJiGU", title: "DTC campaign 03", tag: "DTC Ads", type: "youtube", videoId: "ehvAu9tJiGU", isVertical: true },
+            { id: "dtc-fqcKu8v7jbI", title: "DTC campaign 04", tag: "DTC Ads", type: "youtube", videoId: "fqcKu8v7jbI", isVertical: true },
+            { id: "dtc-dc4KmxCgTSw", title: "DTC campaign 05", tag: "DTC Ads", type: "youtube", videoId: "dc4KmxCgTSw", isVertical: true },
+            { id: "dtc-pGWFuT_57Bs", title: "DTC campaign 06", tag: "DTC Ads", type: "youtube", videoId: "pGWFuT_57Bs", isVertical: true },
           ]
         },
         {
           name: "AI Films & Microdramas",
           items: [
-            { id: "ai-film-ONJkfWwlXg4", title: "AI microdrama 01", tag: "AI Films & Microdramas", type: "youtube", videoId: "ONJkfWwlXg4" },
-            { id: "ai-film-w4eaCtA0yxc", title: "AI microdrama 02", tag: "AI Films & Microdramas", type: "youtube", videoId: "w4eaCtA0yxc" },
+            { id: "ai-film-ONJkfWwlXg4", title: "AI short film 01", tag: "AI Films & Microdramas", type: "youtube", videoId: "ONJkfWwlXg4" },
+            { id: "ai-film-w4eaCtA0yxc", title: "AI short film 02", tag: "AI Films & Microdramas", type: "youtube", videoId: "w4eaCtA0yxc" },
           ]
         },
         {
@@ -327,8 +328,8 @@ const AllWork = () => {
         {
           name: "Story Explainer",
           items: [
-            { id: "explainer-n5ZzpteMsOs", title: "Origin Of Clea Hindi", tag: "Story Explainer", type: "youtube", videoId: "n5ZzpteMsOs" },
-            { id: "explainer-duFUqDAfSW4", title: "Doctor Strange Third Eye Explained in Hindi", tag: "Story Explainer", type: "youtube", videoId: "duFUqDAfSW4" },
+            { id: "explainer-n5ZzpteMsOs", title: "Origin of Clea (Hindi explainer)", tag: "Story Explainer", type: "youtube", videoId: "n5ZzpteMsOs" },
+            { id: "explainer-duFUqDAfSW4", title: "Doctor Strange’s Third Eye (Hindi explainer)", tag: "Story Explainer", type: "youtube", videoId: "duFUqDAfSW4" },
           ]
         },
         {
@@ -366,14 +367,14 @@ const AllWork = () => {
         <SectionReveal variant="fade-up" className="flex flex-col items-center text-center gap-4 mb-12 md:mb-14">
           <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 w-fit">
             <span className="w-2 h-2 rounded-full bg-white/40 animate-pulse" />
-            <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/40">Selected Work</span>
+            <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/40">Selected projects</span>
           </div>
           <h2 className="text-5xl md:text-7xl font-serif text-white tracking-tight flex items-center gap-x-3 md:gap-x-4">
             <RandomLetterSwapPingPong label="Selected" />
             <RandomLetterSwapPingPong label="Work" className="text-white/40 italic" />
           </h2>
           <p className="text-white/50 text-base md:text-lg max-w-xl">
-            Videos, ads, and motion graphics I have worked on.
+            Video edits, campaign ads, motion graphics, and design. Browse the work, then get in touch to discuss your brief.
           </p>
         </SectionReveal>
 
@@ -387,7 +388,7 @@ const AllWork = () => {
               </div>
               <h3 className="text-xl font-serif text-white mb-2">Talking-Head Video — Askul Global</h3>
               <p className="text-sm text-white/50 leading-relaxed">
-                Edited talking-head videos for Askul Global in Adobe After Effects.
+                Presenter-led videos edited for Askul Global in Adobe After Effects.
               </p>
             </div>
             <div>
@@ -411,7 +412,7 @@ const AllWork = () => {
               </div>
               <h3 className="text-xl font-serif text-white mb-2">ELECTRA Teaser 2024</h3>
               <p className="text-sm text-white/50 leading-relaxed">
-                Edited the teaser for ELECTRA 2024, a festival organized by EEL at MMMUT.
+                Edited the teaser for ELECTRA 2024, the festival organized by EEL at MMMUT.
               </p>
             </div>
             <div>
@@ -449,11 +450,11 @@ const AllWork = () => {
               <div className="h-[1px] w-8 bg-gradient-to-l from-transparent to-white/20" />
             </div>
             <h3 className="text-2xl md:text-4xl font-serif text-white tracking-tight flex flex-wrap items-center justify-center gap-x-2 md:gap-x-3">
-              <RandomLetterSwapPingPong label="Choose" className="text-white/90" />
-              <RandomLetterSwapPingPong label="a video" className="text-white/40 italic" />
+              <RandomLetterSwapPingPong label="Watch" className="text-white/90" />
+              <RandomLetterSwapPingPong label="selected work" className="text-white/40" />
             </h3>
             <p className="text-sm text-white/30 max-w-md">
-              Use the thumbnails to switch videos.
+              Select a thumbnail to preview a project.
             </p>
           </motion.div>
         </SectionReveal>

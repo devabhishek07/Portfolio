@@ -42,7 +42,7 @@ export const Hero = () => {
               duration={1.5}
               characterSet="01"
             >
-              Video Editor | Graphic Designer | AI Video Creator
+              Video Editor | AI Video Creator | Motion Graphics | Graphic Designer
             </TextScramble>
           </motion.div>
 
@@ -81,7 +81,7 @@ export const Hero = () => {
               delay={0.8}
               className="text-base md:text-xl text-white/60 max-w-2xl leading-relaxed text-justify"
             >
-              I edit talking-head videos, social clips, and paid ads. I also create campaign graphics and use AI tools for video projects.
+              I help brands and creators turn raw footage and campaign ideas into polished videos, ads, and visuals. From social edits to AI-assisted content, each piece is shaped for its audience and platform.
             </TextEffect>
           </div>
 
@@ -95,7 +95,7 @@ export const Hero = () => {
               onClick={() => scrollToTarget('projects')}
               size="lg"
             >
-              See my work
+              Explore selected work
             </LiquidButton>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -103,7 +103,7 @@ export const Hero = () => {
               onClick={() => scrollToTarget('contact')}
               className="flex items-center justify-center bg-white text-[#0c0c0c] px-8 h-10 rounded-md text-sm font-semibold hover:bg-white/90 transition-colors"
             >
-              Contact me
+              Start a project
             </motion.button>
           </motion.div>
         </div>
@@ -123,9 +123,9 @@ export const Hero = () => {
             }}
             className="absolute top-0 right-4 w-72 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md z-20"
           >
-            <h4 className="text-white font-serif text-lg mb-2">70+ talking-head videos</h4>
+            <h4 className="text-white font-serif text-lg mb-2">70+ videos edited</h4>
             <p className="text-white/70 text-xs leading-relaxed">
-              Edited for DigiChowk&apos;s social channels during my internship.
+              Presenter-led videos edited for DigiChowk&apos;s social channels.
             </p>
           </motion.div>
 
@@ -142,9 +142,9 @@ export const Hero = () => {
             }}
             className="absolute bottom-4 right-[-40px] w-72 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md z-10"
           >
-            <h4 className="text-white font-serif text-lg mb-2">Video ads for FRND</h4>
+            <h4 className="text-white font-serif text-lg mb-2">Campaign videos for FRND</h4>
             <p className="text-white/70 text-xs leading-relaxed">
-              Made video ads for FRND&apos;s Meta and Google campaigns and social channels.
+              AI-assisted ads for Meta, Google, and social campaigns.
             </p>
           </motion.div>
 
@@ -154,9 +154,9 @@ export const Hero = () => {
             transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-[38%] left-0 w-64 p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md z-10"
           >
-            <h4 className="text-white font-serif text-lg mb-2">DTC video ads</h4>
+            <h4 className="text-white font-serif text-lg mb-2">Direct-to-consumer ads</h4>
             <p className="text-white/70 text-xs leading-relaxed">
-              Short product ads with a clear offer and call to action.
+              Short product videos built around a clear offer and next step.
             </p>
           </motion.div>
         </div>

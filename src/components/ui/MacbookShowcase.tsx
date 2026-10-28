@@ -13,11 +13,11 @@ interface FeaturedVideo {
 }
 
 const featuredVideos: FeaturedVideo[] = [
-  { id: "showreel-c_0GeIyvwdM", title: "Showreel", category: "SHOWREEL", videoId: "c_0GeIyvwdM" },
-  { id: "story-SPQJ5s6bWyk", title: "Story 01", category: "AI stories", videoId: "SPQJ5s6bWyk" },
-  { id: "story-qF2oUtdswVI", title: "Story 02", category: "AI stories", videoId: "qF2oUtdswVI" },
-  { id: "microdrama-ONJkfWwlXg4", title: "Microdrama 01", category: "Short films", videoId: "ONJkfWwlXg4" },
-  { id: "microdrama-w4eaCtA0yxc", title: "Microdrama 02", category: "Short films", videoId: "w4eaCtA0yxc" },
+  { id: "showreel-c_0GeIyvwdM", title: "Showreel", category: "Selected work", videoId: "c_0GeIyvwdM" },
+  { id: "story-SPQJ5s6bWyk", title: "AI story 01", category: "AI storytelling", videoId: "SPQJ5s6bWyk" },
+  { id: "story-qF2oUtdswVI", title: "AI story 02", category: "AI storytelling", videoId: "qF2oUtdswVI" },
+  { id: "microdrama-ONJkfWwlXg4", title: "Short film 01", category: "AI short films", videoId: "ONJkfWwlXg4" },
+  { id: "microdrama-w4eaCtA0yxc", title: "Short film 02", category: "AI short films", videoId: "w4eaCtA0yxc" },
 ];
 
 export const MacbookShowcase = () => {

@@ -12,17 +12,17 @@ export const ResumeSection = () => {
     { 
       label: "Videos edited",
       value: "70+", 
-      context: "Created at DigiChowk",
+      context: "DigiChowk social channels",
       icon: Video,
     },
     { 
-      label: "First prizes",
+      label: "First-place awards",
       value: "2", 
-      context: "College-level video editing competitions",
+      context: "EXPLORA and TECHSRIJAN",
       icon: Trophy,
     },
     { 
-      label: "Graduation",
+      label: "Expected graduation",
       value: "2027", 
       context: "B.Tech, Electrical Engineering",
       icon: GraduationCap,
@@ -52,7 +52,7 @@ export const ResumeSection = () => {
                 Resume
               </h2>
               <p className="text-white/40 text-lg leading-relaxed">
-                Download my resume for roles, dates, and education.
+                View my experience, education, and key skills in one place.
               </p>
               <div className="flex justify-center lg:justify-start mt-4">
                 <a 

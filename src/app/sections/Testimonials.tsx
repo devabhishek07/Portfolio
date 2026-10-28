@@ -9,15 +9,15 @@ import { scrollToTarget } from "@/lib/scroll";
 
 const milestones = [
   {
-    title: "Two first prizes",
-    category: "Video editing competitions",
-    description: "I won first prize for video editing at EXPLORA and TECHSRIJAN.",
+    title: "Two first-place wins",
+    category: "Video editing",
+    description: "Earned first place in video editing competitions at EXPLORA and TECHSRIJAN.",
     icon: Trophy,
   },
   {
-    title: "AI tools in my workflow",
-    category: "Video and image work",
-    description: "I use Veo 3, Nano Banana, and ChatGPT for generated footage, images, and script ideas when a project calls for them.",
+    title: "AI-assisted production",
+    category: "Video, image, and script development",
+    description: "I use tools such as Veo 3, Nano Banana, and ChatGPT to develop footage, imagery, and scripts when they fit the brief.",
     icon: Sparkles,
   }
 ];
@@ -33,7 +33,7 @@ export const Testimonials = () => {
             <div className="flex flex-col gap-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 w-fit">
                 <span className="text-[10px] text-white">⊙</span>
-                <span className="text-[10px] uppercase tracking-widest text-white/40">Awards &amp; work</span>
+                <span className="text-[10px] uppercase tracking-widest text-white/40">Recognition</span>
               </div>
               
               <div className="flex flex-col gap-4">
@@ -42,7 +42,7 @@ export const Testimonials = () => {
                   <RandomLetterSwapPingPong label="and tools" className="text-white/40" />
                 </h2>
                 <p className="text-white/40 text-lg leading-relaxed">
-                  Two college competition wins and some of the tools I use.
+                  Two first-place awards, plus the tools I use to plan and produce video and design work.
                 </p>
               </div>
             </div>
@@ -52,13 +52,13 @@ export const Testimonials = () => {
                 onClick={() => scrollToTarget('projects')}
                 size="lg"
               >
-                See my work
+                Explore selected work
               </LiquidButton>
               <LiquidButton 
                 onClick={() => scrollToTarget('contact')}
                 size="lg"
               >
-                Contact me
+                Discuss a project
               </LiquidButton>
             </div>
           </SectionReveal>

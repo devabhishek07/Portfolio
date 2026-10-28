@@ -78,7 +78,7 @@ export const Navigation = () => {
         className="flex items-center gap-2 bg-white text-[#0c0c0c] px-3 md:px-5 py-2 rounded-full text-sm font-semibold hover:bg-white/90 transition-colors shrink-0"
       >
         <span>✦</span>
-        <span className="hidden sm:inline">Contact me</span>
+        <span className="hidden sm:inline">Start a project</span>
       </motion.button>
     </motion.header>
   );

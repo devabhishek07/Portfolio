@@ -14,11 +14,11 @@ export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "Project inquiry",
+    subject: "Project brief",
     message: "",
   });
 
-  const mailtoUrl = `mailto:abhishekkumardev57@gmail.com?subject=${encodeURIComponent(formData.subject || "Project inquiry")}&body=${encodeURIComponent(`Hi Abhishek,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+  const mailtoUrl = `mailto:abhishekkumardev57@gmail.com?subject=${encodeURIComponent(formData.subject || "Project brief")}&body=${encodeURIComponent(`Hi Abhishek,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,7 +41,7 @@ export function Contact() {
       }
 
       setSubmissionStatus("success");
-      setFormData({ name: "", email: "", subject: "Project inquiry", message: "" });
+      setFormData({ name: "", email: "", subject: "Project brief", message: "" });
     } catch {
       setSubmissionStatus("error");
     }
@@ -69,7 +69,7 @@ export function Contact() {
                 <RandomLetterSwapPingPong label="project" className="text-white/40" />
               </h2>
               <p className="text-lg text-white/60 leading-relaxed max-w-md font-sans">
-                Tell me what you need and when. I&apos;ll reply by email.
+                Have a video or campaign in mind? Share the brief, deliverables, and timeline. I&apos;ll reply by email to discuss next steps.
               </p>
             </div>
 
@@ -79,7 +79,7 @@ export function Contact() {
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white/40 uppercase tracking-widest mb-1">Email Me</h4>
+                  <h4 className="text-xs font-bold text-white/40 uppercase tracking-widest mb-1">Email</h4>
                   <a href="mailto:abhishekkumardev57@gmail.com" className="text-lg text-white hover:text-white/70 transition-colors">
                     abhishekkumardev57@gmail.com
                   </a>
@@ -91,7 +91,7 @@ export function Contact() {
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white/40 uppercase tracking-widest mb-1">Location</h4>
+                  <h4 className="text-xs font-bold text-white/40 uppercase tracking-widest mb-1">Based in</h4>
                   <p className="text-lg text-white">
                     Gorakhpur, Uttar Pradesh, India
                   </p>
@@ -173,7 +173,7 @@ export function Contact() {
                     id="contact-subject"
                     name="subject"
                     type="text" 
-                    placeholder="Project inquiry"
+                    placeholder="Project brief"
                     className="form-input w-full px-5 py-4 rounded-2xl bg-white/[0.03] border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-white/30 transition-all text-sm"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -187,7 +187,7 @@ export function Contact() {
                     name="message"
                     required
                     rows={5}
-                    placeholder="What do you need help with, and when do you need it?"
+                    placeholder="Tell me about the goal, audience, deliverables, and timeline."
                     className="form-input w-full px-5 py-4 rounded-2xl bg-white/[0.03] border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-white/30 transition-all text-sm resize-none"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -198,7 +198,7 @@ export function Contact() {
                   {submissionStatus === "sending" && "Sending your message…"}
                   {submissionStatus === "success" && "Message sent. Thanks for reaching out!"}
                   {submissionStatus === "error" && "Couldn’t send your message. Please try again or use the email app."}
-                  {submissionStatus === "idle" && "Your message will be sent directly to my inbox."}
+                  {submissionStatus === "idle" && "Your message goes straight to my inbox."}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-2">
                   <LiquidButton 
@@ -206,14 +206,14 @@ export function Contact() {
                     disabled={submissionStatus === "sending"}
                     className="flex-1 h-14 shadow-[0_20px_40px_rgba(255,255,255,0.1)]"
                   >
-                    {submissionStatus === "sending" ? "Sending…" : submissionStatus === "success" ? "Message Sent" : "Send Message"}
+                    {submissionStatus === "sending" ? "Sending…" : submissionStatus === "success" ? "Message Sent" : "Send project brief"}
                     {submissionStatus !== "success" && <Send className="h-4 w-4 ml-2" />}
                   </LiquidButton>
                   <a 
                     href={mailtoUrl}
                     className="px-6 h-14 rounded-full border border-white/10 bg-white/5 text-white/80 hover:bg-white hover:text-black transition-all flex items-center justify-center text-sm font-medium whitespace-nowrap"
                   >
-                    Open Email App
+                    Email instead
                   </a>
                 </div>
               </form>

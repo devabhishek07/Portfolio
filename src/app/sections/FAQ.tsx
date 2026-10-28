@@ -13,24 +13,24 @@ export const FAQ = () => {
 
   const faqs = [
     {
-      question: "What work can you take on?",
-      answer: "Video editing, talking-head videos, short ads, Reels, motion graphics, and graphic design."
+      question: "What can you help with?",
+      answer: "I edit presenter-led videos, Reels, promotional videos, and paid ads. I also create motion graphics and campaign design."
     },
     {
-      question: "How do I get in touch?",
-      answer: "Use the contact form or email me at abhishekkumardev57@gmail.com. A short project description and timeline are helpful."
+      question: "What should I include in a project brief?",
+      answer: "Share the goal, audience, deliverables, reference links, and deadline. If you already have footage or brand assets, mention those too."
     },
     {
       question: "Which editing and design tools do you use?",
-      answer: "I use Adobe After Effects, Premiere Pro, Photoshop, and Canva."
+      answer: "My main tools are Adobe After Effects, Premiere Pro, Photoshop, and Canva. The project and deliverables guide the setup."
     },
     {
-      question: "Which AI tools do you use?",
-      answer: "Veo 3, Nano Banana, Runway, Higgsfield AI, ChatGPT, ElevenLabs, and OpenArt. The project determines which ones I use."
+      question: "How do AI tools fit into your process?",
+      answer: "I use Veo 3, Nano Banana, Runway, Higgsfield AI, ChatGPT, ElevenLabs, and OpenArt when generated footage, imagery, voice, or ideas suit the brief."
     },
     {
-      question: "What projects have you worked on?",
-      answer: "Video ads for FRND, social videos at DigiChowk, talking-head videos for Askul Global, graphics at Pixelo Digital, and the ELECTRA 2024 teaser."
+      question: "What experience do you bring?",
+      answer: "My work includes campaign ads for FRND, more than 70 social videos for DigiChowk, editing for Askul Global, design work for Pixelo Digital, and the ELECTRA 2024 teaser."
     }
   ];
 
@@ -50,7 +50,7 @@ export const FAQ = () => {
                 <RandomLetterSwapPingPong label="Frequently asked questions" />
               </h2>
               <p className="text-white/40 text-lg leading-relaxed">
-                Details about my work and the contact process.
+                A few details about the work, tools, and getting started.
               </p>
             </div>
 
@@ -59,13 +59,13 @@ export const FAQ = () => {
                 onClick={() => scrollToTarget('projects')}
                 size="lg"
               >
-                See my work
+                Explore selected work
               </LiquidButton>
               <LiquidButton 
                 onClick={() => scrollToTarget('contact')}
                 size="lg"
               >
-                Contact me
+                Discuss a project
               </LiquidButton>
             </div>
           </SectionReveal>

@@ -22,19 +22,19 @@ export const About = () => {
       ]
     },
     {
-      title: "AI Tools",
+      title: "AI production tools",
       skills: [
-        { name: "Veo 3", desc: "Generate video clips from prompts" },
+        { name: "Veo 3", desc: "Create video clips from prompts" },
         { name: "Nano Banana", desc: "Generate and edit images" },
-        { name: "Runway", desc: "Generative video tools" },
-        { name: "Higgsfield AI", desc: "AI video generation" },
-        { name: "ChatGPT", desc: "Draft scripts, ideas, and ad hooks" },
-        { name: "ElevenLabs", desc: "AI voice and voiceover tools" },
-        { name: "OpenArt", desc: "Generate images and gather visual references" },
+        { name: "Runway", desc: "Generate and refine video clips" },
+        { name: "Higgsfield AI", desc: "Develop AI-generated video" },
+        { name: "ChatGPT", desc: "Develop scripts, concepts, and ad hooks" },
+        { name: "ElevenLabs", desc: "Create and refine voiceovers" },
+        { name: "OpenArt", desc: "Create images and explore visual references" },
       ]
     },
     {
-      title: "Skills",
+      title: "Creative skills",
       skills: [
         { name: "Storytelling", desc: "Arrange shots around a clear idea" },
         { name: "Color Grading", desc: "Adjust color and tone to suit the footage" },
@@ -43,7 +43,7 @@ export const About = () => {
       ]
     },
     {
-      title: "Editing",
+      title: "Post-production",
       skills: [
         { name: "3D Camera", desc: "Camera moves and tracking in 3D scenes" },
         { name: "Motion Graphics", desc: "Animated text, shapes, and titles" },
@@ -57,28 +57,28 @@ export const About = () => {
     { 
       role: "Freelance Video Editor", 
       company: "FRND", 
-      period: "Mar 2026 - Present",
+      period: "Mar 2026 – Present",
       location: "Bangalore, Karnataka",
-      desc: "Make AI-generated video ads for FRND's Meta and Google campaigns and social channels."
+      desc: "Create AI-assisted video ads for FRND's Meta and Google campaigns and social channels."
     },
     { 
       role: "Video Editor", 
       company: "Pixelo Digital", 
-      period: "Oct 2025 - Dec 2025",
+      period: "Oct 2025 – Dec 2025",
       location: "Navi Mumbai",
-      desc: "Designed campaign graphics, social posts, presentations, and brand materials."
+      desc: "Created campaign graphics, social posts, presentations, and brand materials."
     },
     { 
       role: "Video Editor Intern", 
       company: "DigiChowk", 
-      period: "Aug 2025 - Sep 2025",
+      period: "Aug 2025 – Sep 2025",
       location: "Delhi",
-      desc: "Edited more than 70 talking-head videos for social media."
+      desc: "Edited more than 70 presenter-led videos for social media."
     },
     { 
-      role: "Freelance video editor",
-      company: "Freelancing", 
-      period: "2023 - 2024",
+      role: "Freelance Video Editor",
+      company: "Independent",
+      period: "2023 – 2024",
       location: null,
       desc: "Edited ads, promotional videos, and Reels for creators and startups."
     },
@@ -95,7 +95,7 @@ export const About = () => {
         {/* Section Header */}
         <SectionReveal variant="fade-up" className="flex justify-center mb-10">
           <p className="text-white/40 text-center max-w-md text-base font-medium">
-            Video editing, design, and the work behind each project.
+            Video and design work, shaped around each brief.
           </p>
         </SectionReveal>
 
@@ -135,7 +135,7 @@ export const About = () => {
                     className="text-white/40"
                   />
                 </h3>
-                <p className="text-white/40 text-base">Video editor and graphic designer in Gorakhpur, India.</p>
+                <p className="text-white/40 text-base">Video editor and graphic designer based in Gorakhpur, India.</p>
               </div>
 
               {/* Categorized Skills Grid */}
@@ -199,11 +199,11 @@ export const About = () => {
               {/* Bio */}
               <div className="flex flex-col gap-6">
                 <h3 className="text-3xl md:text-5xl font-serif text-white tracking-tight flex flex-wrap items-center gap-x-2 md:gap-x-3 gap-y-1 md:gap-y-2">
-                  <RandomLetterSwapPingPong label="What I do" />
+                  <RandomLetterSwapPingPong label="What I bring to a project" />
                 </h3>
                 <div className="flex flex-col gap-4">
                   <TextEffect preset="blur" className="text-base md:text-lg text-white/70 leading-relaxed font-sans text-justify">
-                    I edit talking-head videos, social clips, and ads. I also design campaign graphics and use AI tools when a project needs generated footage or images.
+                    I work with brands and creators to turn footage and campaign briefs into finished videos and visuals. I can take a project from the edit and pacing through captions, graphics, and final polish.
                   </TextEffect>
                 </div>
 
@@ -213,7 +213,7 @@ export const About = () => {
                 <div className="flex flex-col gap-2">
                   <h4 className="text-2xl font-serif text-white tracking-tight">Experience</h4>
                   <p className="text-sm text-white/40">
-                    My work includes video ads at FRND, graphics at Pixelo Digital, and social videos at DigiChowk.
+                    My experience includes campaign videos for FRND, design work at Pixelo Digital, and more than 70 social edits for DigiChowk.
                   </p>
                 </div>
 

@@ -12,37 +12,37 @@ export const Process = () => {
     {
       number: "01",
       title: "AI video ads",
-      description: "Make video ads with AI-generated footage and images for social and paid campaigns.",
+      description: "Turn a campaign brief into short ads with generated footage, product visuals, and a clear call to action.",
       icon: Sparkles,
     },
     {
       number: "02",
-      title: "Talking-head editing",
-      description: "Edit interviews and presenter videos with clean cuts, captions, and graphics.",
+      title: "Talking-head videos",
+      description: "Keep interviews and presenter videos clear with considered cuts, readable captions, and supporting graphics.",
       icon: MessageSquare,
     },
     {
       number: "03",
-      title: "Promotional videos and Reels",
-      description: "Cut footage into short videos for launches, events, and social media.",
+      title: "Promos and Reels",
+      description: "Shape footage into concise videos for launches, events, and social feeds.",
       icon: Film,
     },
     {
       number: "04",
       title: "Motion graphics",
-      description: "Create animated titles, text, and 3D camera moves.",
+      description: "Add animated titles, product callouts, and 3D camera movement to your video.",
       icon: Layers,
     },
     {
       number: "05",
       title: "Graphic design",
-      description: "Design campaign graphics, social posts, presentations, and brand materials.",
+      description: "Create a consistent set of campaign graphics, social posts, presentations, and brand materials.",
       icon: Palette,
     },
     {
       number: "06",
       title: "Video finishing",
-      description: "Color grade footage, mix audio, adjust speed, and mask moving subjects.",
+      description: "Finish the cut with color grading, balanced audio, precise speed changes, and clean masks.",
       icon: Scissors,
     },
   ];
@@ -66,7 +66,7 @@ export const Process = () => {
             <RandomLetterSwapPingPong label="Services" />
           </h2>
           <p className="text-white/40 text-lg max-w-md">
-            Video editing, motion graphics, and design work.
+            Video editing and design for social content, paid campaigns, and brand stories.
           </p>
         </SectionReveal>
 
