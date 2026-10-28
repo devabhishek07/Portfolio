@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { RandomLetterSwapPingPong } from "@/components/ui/random-letter-swap";
 import { Instagram, Linkedin, XLogo } from "@/components/ui/Icons";
@@ -84,18 +84,6 @@ export function Contact() {
                   <a href="mailto:abhishekkumardev57@gmail.com" className="text-lg text-white hover:text-white/70 transition-colors">
                     abhishekkumardev57@gmail.com
                   </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-5">
-                <div className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 flex-shrink-0">
-                  <MapPin className="h-5 w-5" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-white/40 uppercase tracking-widest mb-1">Based in</h4>
-                  <p className="text-lg text-white">
-                    Gorakhpur, Uttar Pradesh, India
-                  </p>
                 </div>
               </div>
 
@@ -226,3 +214,4 @@ export function Contact() {
     </section>
   );
 }
+
