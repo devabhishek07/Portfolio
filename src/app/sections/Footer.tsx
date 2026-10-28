@@ -32,7 +32,7 @@ export function Footer() {
               Abhishek Kumar
             </a>
             <p className="text-sm text-white/40 leading-relaxed max-w-xs">
-              Video editor and graphic designer creating social content, ads, and campaign visuals. Based in Gorakhpur, India.
+              Video editor and graphic designer creating social content, ads, and campaign visuals. Based in Bangalore, India.
             </p>
           </div>
 
@@ -100,3 +100,4 @@ export function Footer() {
     </footer>
   );
 }
+
