@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, MessageSquare, Film, Layers, Palette, Scissors } from "lucide-react";
+import { MessageSquare, CreditCard, Layers, Zap, Scissors, CircleCheck } from "lucide-react";
 import { RandomLetterSwapPingPong } from "@/components/ui/random-letter-swap";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { TextEffect } from "@/components/ui/text-effect";
@@ -11,39 +11,39 @@ export const Process = () => {
   const services = [
     {
       number: "01",
-      title: "AI video ads",
-      description: "Turn a campaign brief into short ads with generated footage, product visuals, and a clear call to action.",
-      icon: Sparkles,
-    },
-    {
-      number: "02",
-      title: "Talking-head videos",
-      description: "Keep interviews and presenter videos clear with considered cuts, readable captions, and supporting graphics.",
+      title: "Client Meeting",
+      description: "I connect with clients via online Meet to understand their vision and collaboratively build a project roadmap. I also contribute my own creative input to help the client see the bigger picture and enhance the final outcome. Payment terms are discussed and agreed upon during this call.",
       icon: MessageSquare,
     },
     {
-      number: "03",
-      title: "Promos and Reels",
-      description: "Shape footage into concise videos for launches, events, and social feeds.",
-      icon: Film,
+      number: "02",
+      title: "Advance Payment & Project Kickoff",
+      description: "Once the client makes an advance payment of 30% of the total project fee, work officially begins. A deadline is also fixed at this stage to keep the project on track.",
+      icon: CreditCard,
     },
     {
-      number: "04",
-      title: "Motion graphics",
-      description: "Add animated titles, product callouts, and 3D camera movement to your video.",
+      number: "03",
+      title: "Storyboard",
+      description: "The first step in production is building a storyboard. I manually curate references and inspiration relevant to the project, and for scenes that need to be created from scratch, I sketch them out directly on the storyboard - bringing my own creative direction to life visually.",
       icon: Layers,
     },
     {
+      number: "04",
+      title: "Production",
+      description: "Drawing on my experience across various ad campaigns, I apply my understanding of the target audience and campaign objectives to craft fast, punchy, and visually compelling hook scenes that grab attention from the first frame.",
+      icon: Zap,
+    },
+    {
       number: "05",
-      title: "Graphic design",
-      description: "Create a consistent set of campaign graphics, social posts, presentations, and brand materials.",
-      icon: Palette,
+      title: "AI-Assisted Editing & Post-Production",
+      description: "Scene analysis is conducted using AI tools (Claude and ChatGPT) to craft catchy hooks and keep the narrative sharp. Visual enhancement is then applied to each scene to refine colour grading, tone, and aesthetics to match the desired mood. SFX and background music are layered in to elevate the emotional impact, using industry-standard tools including Adobe Premiere Pro, After Effects, and Photoshop.",
+      icon: Scissors,
     },
     {
       number: "06",
-      title: "Video finishing",
-      description: "Finish the cut with color grading, balanced audio, precise speed changes, and clean masks.",
-      icon: Scissors,
+      title: "Delivery & Final Polishing",
+      description: "The completed video is delivered with a watermark applied. The package includes 3 complimentary revision rounds for any adjustments. Should revisions exceed this limit, each additional change will be billed individually, with the cost determined by the complexity of the requested modification.",
+      icon: CircleCheck,
     },
   ];
 
@@ -80,7 +80,7 @@ export const Process = () => {
               delay={i * 0.08}
             >
               <motion.div
-                id={service.number === "05" ? "designs" : undefined}
+                id={service.number === "03" ? "designs" : undefined}
                 className="p-8 rounded-[2rem] border border-white/10 bg-[#111] relative group overflow-hidden h-full flex flex-col"
               >
                 {/* Number Badge */}
@@ -103,6 +103,12 @@ export const Process = () => {
                   </p>
                 </div>
 
+                <div className="mt-8 border-t border-white/10 pt-8">
+                  <span className="inline-flex rounded-full bg-white/5 px-5 py-2 text-[10px] font-bold uppercase tracking-wide text-white/40">
+                    Step {Number(service.number)}
+                  </span>
+                </div>
+
               </motion.div>
             </SectionReveal>
           ))}
@@ -111,3 +117,4 @@ export const Process = () => {
     </section>
   );
 };
+
