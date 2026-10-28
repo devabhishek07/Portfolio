@@ -8,15 +8,15 @@ interface FeaturedVideo {
   id: string;
   title: string;
   category: string;
-  driveId: string;
+  videoId: string;
 }
 
 const featuredVideos: FeaturedVideo[] = [
-  { id: "showreel", title: "Selected work", category: "Showreel", driveId: "1ii5sMmy2sKM_T9ZMTrg7f7S4ITBVjJYZ" },
-  { id: "clea", title: "Origin of Clea", category: "AI storytelling", driveId: "1EbnIsemnbB9_oisC49048O0Vvi7kbHpQ" },
-  { id: "drakkon", title: "Lord Drakkon", category: "AI storytelling", driveId: "1rT3OErEBgzJKUp8krCxql-IgtzK3CnVn" },
-  { id: "film-one", title: "Short film 01", category: "AI short films", driveId: "1NFuTg1ujkA5nPe-_mXB0ItPXny0j3VFd" },
-  { id: "film-two", title: "Short film 02", category: "AI short films", driveId: "1mjbzWsS7d57KDsJSfAL3ncVXMTUcuC2S" },
+  { id: "showreel", title: "Selected work", category: "Showreel", videoId: "c_0GeIyvwdM" },
+  { id: "clea", title: "Origin of Clea", category: "AI storytelling", videoId: "SPQJ5s6bWyk" },
+  { id: "drakkon", title: "Lord Drakkon", category: "AI storytelling", videoId: "qF2oUtdswVI" },
+  { id: "film-one", title: "Short film 01", category: "AI short films", videoId: "ONJkfWwlXg4" },
+  { id: "film-two", title: "Short film 02", category: "AI short films", videoId: "w4eaCtA0yxc" },
 ];
 
 export const MacbookShowcase = () => {
@@ -41,11 +41,11 @@ export const MacbookShowcase = () => {
             </div>
             <div className="absolute z-10 overflow-hidden bg-black" style={{ top: "11.2%", left: "14%", right: "14%", bottom: "17%", borderTopLeftRadius: "8px", borderTopRightRadius: "8px" }}>
               <iframe
-                key={activeVideo.driveId}
-                src={`https://drive.google.com/file/d/${activeVideo.driveId}/preview`}
+                key={activeVideo.videoId}
+                src={`https://www.youtube-nocookie.com/embed/${activeVideo.videoId}?autoplay=1&mute=1&loop=1&playlist=${activeVideo.videoId}&controls=1&rel=0&playsinline=1`}
                 title={activeVideo.title}
                 className="absolute inset-0 h-full w-full border-0"
-                allow="autoplay; encrypted-media; fullscreen"
+                allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
                 allowFullScreen
               />
             </div>
@@ -55,7 +55,7 @@ export const MacbookShowcase = () => {
       <div className="relative z-30 mt-3 grid w-full max-w-4xl grid-cols-2 gap-3 px-5 sm:grid-cols-3 md:grid-cols-5 md:gap-4 md:px-0">
         {featuredVideos.map((video, index) => (
           <button key={video.id} onClick={() => goTo(index)} aria-pressed={activeIndex === index} className={`group overflow-hidden rounded-xl border text-left transition ${activeIndex === index ? "border-white/60 bg-white/[0.08]" : "border-white/10 bg-white/[0.025] hover:border-white/30"}`}>
-            <img src={`https://drive.google.com/thumbnail?id=${video.driveId}&sz=w800`} alt="" className="aspect-video w-full object-cover opacity-75 transition group-hover:opacity-100" loading="lazy" />
+            <img src={`https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`} alt="" className="aspect-video w-full object-cover opacity-75 transition group-hover:opacity-100" loading="lazy" />
             <span className="block whitespace-normal break-words px-3 pt-2 text-[9px] font-mono leading-snug tracking-[0.08em] text-white/45">{video.category}</span>
             <span className="block whitespace-normal break-words px-3 pb-2 text-xs font-medium leading-snug text-white/80">{video.title}</span>
           </button>
