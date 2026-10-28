@@ -470,7 +470,7 @@ const AllWork = () => {
                   allowFullScreen
                   title={selectedVideo.title}
                 />
-              ) : selectedVideo.type === 'image' ? (
+              ) : (
                 <img src={selectedVideo.src} className="w-full h-full object-contain" alt={selectedVideo.title} />
               )}
             </motion.div>
