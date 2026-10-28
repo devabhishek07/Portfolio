@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     default: 'Abhishek Kumar | Video Editor and Graphic Designer',
     template: '%s | Abhishek Kumar'
   },
-  description: "Video editor and graphic designer creating social videos, campaign ads, motion graphics, and brand visuals. Based in Gorakhpur, India.",
+  description: "Video editor and graphic designer creating social videos, campaign ads, motion graphics, and brand visuals. Based in Bangalore, India.",
   keywords: [
     'Abhishek Kumar', 
     'Video Editor', 
@@ -97,3 +97,4 @@ export default function RootLayout({
     </html>
   );
 }
+
