@@ -135,7 +135,7 @@ export const About = () => {
                     className="text-white/40"
                   />
                 </h3>
-                <p className="text-white/40 text-base">Video editor and graphic designer based in Gorakhpur, India.</p>
+                <p className="text-white/40 text-base">Video editor and graphic designer based in Bangalore, India.</p>
               </div>
 
               {/* Categorized Skills Grid */}
@@ -285,3 +285,4 @@ export const About = () => {
     </section>
   );
 };
+
