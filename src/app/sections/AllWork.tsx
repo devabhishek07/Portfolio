@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Play } from 'lucide-react';
+import { X } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import { GlowCard } from '@/components/ui/spotlight-card';
 import { RandomLetterSwapPingPong } from '@/components/ui/random-letter-swap';
@@ -14,8 +14,8 @@ interface WorkItem {
   id: string;
   title: string;
   tag: string;
-  type: 'drive' | 'image';
-  driveId?: string;
+  type: 'youtube' | 'image';
+  videoId?: string;
   src?: string;
   poster?: string;
   isVertical?: boolean;
@@ -25,55 +25,33 @@ interface WorkItem {
 
 
 const MediaContent = React.memo(({ item }: { item: WorkItem }) => {
-  const videoRef = React.useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
 
   React.useEffect(() => {
-    const video = videoRef.current;
-    if (!video || item.type !== "drive" || !item.driveId) return;
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        video.play().catch(() => setPlaying(false));
-      } else {
-        video.pause();
-      }
-    }, { rootMargin: "80px" });
-
-    observer.observe(video);
+    const container = containerRef.current;
+    if (!container || item.type !== 'youtube' || !item.videoId) return;
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      rootMargin: '80px',
+      threshold: 0.15,
+    });
+    observer.observe(container);
     return () => observer.disconnect();
-  }, [item.driveId, item.type]);
+  }, [item.videoId, item.type]);
 
   return (
-    <div data-cursor="video" className="absolute inset-0 w-full h-full overflow-hidden bg-[#0a0a0a] cursor-pointer">
-      <img
-        src={item.src}
-        alt={item.title}
-        loading="lazy"
-        decoding="async"
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${playing ? "opacity-0" : "opacity-100"}`}
-      />
-      {item.type === "drive" && item.driveId && (
-        <video
-          ref={videoRef}
-          src={`https://drive.google.com/uc?export=download&id=${item.driveId}`}
-          muted
-          loop
-          playsInline
-          preload="none"
-          onPlaying={() => setPlaying(true)}
-          onPause={() => setPlaying(false)}
-          onError={() => setPlaying(false)}
-          aria-label={item.title}
-          className="absolute inset-0 h-full w-full object-cover"
+    <div ref={containerRef} data-cursor="video" className="absolute inset-0 h-full w-full overflow-hidden bg-[#0a0a0a] cursor-pointer">
+      {item.type === 'youtube' && item.videoId ? (
+        <iframe
+          src={inView ? `https://www.youtube-nocookie.com/embed/${item.videoId}?autoplay=1&mute=1&loop=1&playlist=${item.videoId}&controls=0&rel=0&playsinline=1` : undefined}
+          title={item.title}
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          allowFullScreen
+          loading="lazy"
+          className="pointer-events-none absolute inset-0 h-full w-full border-0"
         />
-      )}
-      {!playing && item.type === "drive" && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/20 pointer-events-none">
-          <span className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
-            <Play size={26} className="ml-1" fill="currentColor" />
-          </span>
-        </div>
+      ) : (
+        <img src={item.src} alt={item.title} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
       )}
     </div>
   );
@@ -164,31 +142,31 @@ const AllWork = () => {
         {
           name: "DTC Ads",
           items: [
-            { id: "dtc-ZaoHmk7s1S8", title: "DTC campaign 02", tag: "DTC Ads", type: "drive", driveId: "1Y7tkMwg3TCaJAlVCfu4BmG7m3qZw0RVu", src: "https://drive.google.com/thumbnail?id=1Y7tkMwg3TCaJAlVCfu4BmG7m3qZw0RVu&sz=w1000", isVertical: true },
-            { id: "dtc-ehvAu9tJiGU", title: "DTC campaign 03", tag: "DTC Ads", type: "drive", driveId: "1_rHWaCGGBLoHPg339Sl5m2firzFLJMZn", src: "https://drive.google.com/thumbnail?id=1_rHWaCGGBLoHPg339Sl5m2firzFLJMZn&sz=w1000", isVertical: true },
-            { id: "dtc-fqcKu8v7jbI", title: "DTC campaign 04", tag: "DTC Ads", type: "drive", driveId: "193SRUiweDc5UHXuVEeXkDJmzvTS23kqX", src: "https://drive.google.com/thumbnail?id=193SRUiweDc5UHXuVEeXkDJmzvTS23kqX&sz=w1000", isVertical: true },
-            { id: "dtc-dc4KmxCgTSw", title: "DTC campaign 05", tag: "DTC Ads", type: "drive", driveId: "15hMD8Mr53iwN8Lgy5uNXewmR_8yM_dLl", src: "https://drive.google.com/thumbnail?id=15hMD8Mr53iwN8Lgy5uNXewmR_8yM_dLl&sz=w1000", isVertical: true },
-            { id: "dtc-pGWFuT_57Bs", title: "DTC campaign 06", tag: "DTC Ads", type: "drive", driveId: "1Xi-6bE7GnNZc3rOvjmlwnINkjvtiUoQq", src: "https://drive.google.com/thumbnail?id=1Xi-6bE7GnNZc3rOvjmlwnINkjvtiUoQq&sz=w1000", isVertical: true },
+            { id: "dtc-ZaoHmk7s1S8", title: "DTC campaign 02", tag: "DTC Ads", type: "youtube", videoId: "ZaoHmk7s1S8", src: "https://i.ytimg.com/vi/ZaoHmk7s1S8/hqdefault.jpg", isVertical: true },
+            { id: "dtc-ehvAu9tJiGU", title: "DTC campaign 03", tag: "DTC Ads", type: "youtube", videoId: "ehvAu9tJiGU", src: "https://i.ytimg.com/vi/ehvAu9tJiGU/hqdefault.jpg", isVertical: true },
+            { id: "dtc-fqcKu8v7jbI", title: "DTC campaign 04", tag: "DTC Ads", type: "youtube", videoId: "fqcKu8v7jbI", src: "https://i.ytimg.com/vi/fqcKu8v7jbI/hqdefault.jpg", isVertical: true },
+            { id: "dtc-dc4KmxCgTSw", title: "DTC campaign 05", tag: "DTC Ads", type: "youtube", videoId: "dc4KmxCgTSw", src: "https://i.ytimg.com/vi/dc4KmxCgTSw/hqdefault.jpg", isVertical: true },
+            { id: "dtc-pGWFuT_57Bs", title: "DTC campaign 06", tag: "DTC Ads", type: "youtube", videoId: "pGWFuT_57Bs", src: "https://i.ytimg.com/vi/pGWFuT_57Bs/hqdefault.jpg", isVertical: true },
           ]
         },
         {
           name: "AI Films & Microdramas",
           items: [
-            { id: "ai-film-ONJkfWwlXg4", title: "AI short film 01", tag: "AI Films & Microdramas", type: "drive", driveId: "1NFuTg1ujkA5nPe-_mXB0ItPXny0j3VFd", src: "https://drive.google.com/thumbnail?id=1NFuTg1ujkA5nPe-_mXB0ItPXny0j3VFd&sz=w1000" },
-            { id: "ai-film-w4eaCtA0yxc", title: "AI short film 02", tag: "AI Films & Microdramas", type: "drive", driveId: "1mjbzWsS7d57KDsJSfAL3ncVXMTUcuC2S", src: "https://drive.google.com/thumbnail?id=1mjbzWsS7d57KDsJSfAL3ncVXMTUcuC2S&sz=w1000" },
+            { id: "ai-film-ONJkfWwlXg4", title: "AI short film 01", tag: "AI Films & Microdramas", type: "youtube", videoId: "ONJkfWwlXg4", src: "https://i.ytimg.com/vi/ONJkfWwlXg4/hqdefault.jpg" },
+            { id: "ai-film-w4eaCtA0yxc", title: "AI short film 02", tag: "AI Films & Microdramas", type: "youtube", videoId: "w4eaCtA0yxc", src: "https://i.ytimg.com/vi/w4eaCtA0yxc/hqdefault.jpg" },
           ]
         },
         {
           name: "AI Storytelling",
           items: [
-            { id: "ai-story-SPQJ5s6bWyk", title: "AI story 01", tag: "AI Storytelling", type: "drive", driveId: "1rT3OErEBgzJKUp8krCxql-IgtzK3CnVn", src: "https://drive.google.com/thumbnail?id=1rT3OErEBgzJKUp8krCxql-IgtzK3CnVn&sz=w1000", isVertical: true },
-            { id: "ai-story-qF2oUtdswVI", title: "AI story 02", tag: "AI Storytelling", type: "drive", driveId: "13mFbUfkABrmz4WgkNWYjU3CVbbFuzXYt", src: "https://drive.google.com/thumbnail?id=13mFbUfkABrmz4WgkNWYjU3CVbbFuzXYt&sz=w1000", isVertical: true },
+            { id: "ai-story-SPQJ5s6bWyk", title: "AI story 01", tag: "AI Storytelling", type: "youtube", videoId: "SPQJ5s6bWyk", src: "https://i.ytimg.com/vi/SPQJ5s6bWyk/hqdefault.jpg", isVertical: true },
+            { id: "ai-story-qF2oUtdswVI", title: "AI story 02", tag: "AI Storytelling", type: "youtube", videoId: "qF2oUtdswVI", src: "https://i.ytimg.com/vi/qF2oUtdswVI/hqdefault.jpg", isVertical: true },
           ]
         },
         {
           name: "Cartoon Advertisements",
           items: [
-            { id: "cartoon-hxsKre4FbgI", title: "Cartoon ad 01", tag: "Cartoon Advertisements", type: "drive", driveId: "16VTW-DKWoh2PZSt1zhbjP1Iusc9guCc9", src: "https://drive.google.com/thumbnail?id=16VTW-DKWoh2PZSt1zhbjP1Iusc9guCc9&sz=w1000", isVertical: true },
+            { id: "cartoon-hxsKre4FbgI", title: "Cartoon ad 01", tag: "Cartoon Advertisements", type: "youtube", videoId: "hxsKre4FbgI", src: "https://i.ytimg.com/vi/hxsKre4FbgI/hqdefault.jpg", isVertical: true },
           ]
         },
       ]
@@ -202,23 +180,23 @@ const AllWork = () => {
         {
           name: "Motion Graphics",
           items: [
-            { id: "motion-UWUybnqWsQk", title: "Amazon motion ad", tag: "Motion Graphics", type: "drive", driveId: "1aFYeXZG2_iuw2ZUo0KOtBzI-RSvOgCmR", src: "https://drive.google.com/thumbnail?id=1aFYeXZG2_iuw2ZUo0KOtBzI-RSvOgCmR&sz=w1000", isVertical: true },
-            { id: "motion-UMvPrUM4hHo", title: "Motion graphic 02", tag: "Motion Graphics", type: "drive", driveId: "1kD1W4oBrdA-tdTCPgvZwCh7CLOEijct3", src: "https://drive.google.com/thumbnail?id=1kD1W4oBrdA-tdTCPgvZwCh7CLOEijct3&sz=w1000", isVertical: true },
-            { id: "motion-FA0pcZJoDl0", title: "Motion graphic preview", tag: "Motion Graphics", type: "drive", driveId: "1_LKSKLVz4SuiBDU82g08JJB6aQnnK0ra", src: "https://drive.google.com/thumbnail?id=1_LKSKLVz4SuiBDU82g08JJB6aQnnK0ra&sz=w1000" },
-            { id: "motion-01H1TOQ6uuk", title: "Motion graphic 03", tag: "Motion Graphics", type: "drive", driveId: "1Bh9nzs2xbodr3nFLAZUb7KmqIEoMl1Ym", src: "https://drive.google.com/thumbnail?id=1Bh9nzs2xbodr3nFLAZUb7KmqIEoMl1Ym&sz=w1000" },
+            { id: "motion-UWUybnqWsQk", title: "Amazon motion ad", tag: "Motion Graphics", type: "youtube", videoId: "UWUybnqWsQk", src: "https://i.ytimg.com/vi/UWUybnqWsQk/hqdefault.jpg", isVertical: true },
+            { id: "motion-UMvPrUM4hHo", title: "Motion graphic 02", tag: "Motion Graphics", type: "youtube", videoId: "UMvPrUM4hHo", src: "https://i.ytimg.com/vi/UMvPrUM4hHo/hqdefault.jpg", isVertical: true },
+            { id: "motion-FA0pcZJoDl0", title: "Motion graphic preview", tag: "Motion Graphics", type: "youtube", videoId: "FA0pcZJoDl0", src: "https://i.ytimg.com/vi/FA0pcZJoDl0/hqdefault.jpg" },
+            { id: "motion-01H1TOQ6uuk", title: "Motion graphic 03", tag: "Motion Graphics", type: "youtube", videoId: "01H1TOQ6uuk", src: "https://i.ytimg.com/vi/01H1TOQ6uuk/hqdefault.jpg" },
           ]
         },
         {
           name: "Story Explainer",
           items: [
-            { id: "explainer-n5ZzpteMsOs", title: "Origin of Clea (Hindi explainer)", tag: "Story Explainer", type: "drive", driveId: "1EbnIsemnbB9_oisC49048O0Vvi7kbHpQ", src: "https://drive.google.com/thumbnail?id=1EbnIsemnbB9_oisC49048O0Vvi7kbHpQ&sz=w1000" },
-            { id: "explainer-duFUqDAfSW4", title: "Doctor Strange’s Third Eye (Hindi explainer)", tag: "Story Explainer", type: "drive", driveId: "1Dl3SERv6BGCExSIp7LNOLuMbE6GgAIik", src: "https://drive.google.com/thumbnail?id=1Dl3SERv6BGCExSIp7LNOLuMbE6GgAIik&sz=w1000" },
+            { id: "explainer-n5ZzpteMsOs", title: "Origin of Clea (Hindi explainer)", tag: "Story Explainer", type: "youtube", videoId: "n5ZzpteMsOs", src: "https://i.ytimg.com/vi/n5ZzpteMsOs/hqdefault.jpg" },
+            { id: "explainer-duFUqDAfSW4", title: "Doctor Strange’s Third Eye (Hindi explainer)", tag: "Story Explainer", type: "youtube", videoId: "duFUqDAfSW4", src: "https://i.ytimg.com/vi/duFUqDAfSW4/hqdefault.jpg" },
           ]
         },
         {
           name: "Launch Video",
           items: [
-            { id: "launch-UDl-ZE4k2so", title: "Aftermovie", tag: "Launch Video", type: "drive", driveId: "1ii5sMmy2sKM_T9ZMTrg7f7S4ITBVjJYZ", src: "https://drive.google.com/thumbnail?id=1ii5sMmy2sKM_T9ZMTrg7f7S4ITBVjJYZ&sz=w1000" },
+            { id: "launch-UDl-ZE4k2so", title: "Aftermovie", tag: "Launch Video", type: "youtube", videoId: "UDl-ZE4k2so", src: "https://i.ytimg.com/vi/UDl-ZE4k2so/hqdefault.jpg" },
           ]
         },
       ]
@@ -497,9 +475,9 @@ const AllWork = () => {
               exit={{ scale: 0.9, y: 20 }}
               className="relative w-full max-w-6xl aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black"
             >
-              {selectedVideo.type === 'drive' ? (
+              {selectedVideo.type === 'youtube' ? (
                 <iframe
-                  src={`https://drive.google.com/file/d/${selectedVideo.driveId}/preview`}
+                  src={`https://www.youtube-nocookie.com/embed/${selectedVideo.videoId}?autoplay=1&mute=1&playsinline=1&rel=0`}
                   className="w-full h-full border-none"
                   allow="autoplay; encrypted-media; fullscreen"
                   allowFullScreen
@@ -517,4 +495,3 @@ const AllWork = () => {
 };
 
 export default AllWork;
-
