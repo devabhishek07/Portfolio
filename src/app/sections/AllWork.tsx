@@ -15,8 +15,9 @@ interface WorkItem {
   id: string;
   title: string;
   tag: string;
-  type: 'youtube' | 'cloudinary' | 'image';
+  type: 'youtube' | 'cloudinary' | 'drive' | 'image';
   videoId?: string;
+  driveId?: string;
   src?: string;
   poster?: string;
   isVertical?: boolean;
@@ -25,176 +26,25 @@ interface WorkItem {
 
 const PAUSE_PREVIEWS_EVENT = 'allwork:pause-previews';
 
-// Gallery card media. Nothing plays on its own:
-//  - mouse: the video plays (muted) only while the cursor is over the card
-//  - touch: tapping the card opens the full player (handled by the parent)
-// The YouTube player is only created the first time a card is hovered, so the
-// page no longer loads 20+ players while scrolling.
-const MediaContent = React.memo(({ item, isUnmuted, setUnmutedId }: { item: any, isUnmuted: boolean, setUnmutedId: (id: string | null) => void }) => {
-  const isYouTube = item.type === 'youtube';
-  const isVideoFile = item.type === 'video' || (item.type === 'cloudinary' && item.src?.endsWith('.mp4'));
-  const isPlayable = isYouTube || isVideoFile;
-
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const iframeRef = React.useRef<HTMLIFrameElement>(null);
-  const videoRef = React.useRef<HTMLVideoElement>(null);
-  const hoveringRef = React.useRef(false);
-
-  const [hovering, setHovering] = React.useState(false);
-  const [mounted, setMounted] = React.useState(false); // player created on first hover
-  const [fileReady, setFileReady] = React.useState(false);
-  const { play: ytPlay, pause: ytPause, setMuted: ytSetMuted, onIframeLoad, isPlaying: ytPlaying } = useYouTubePlayer(iframeRef);
-
-  const start = () => {
-    hoveringRef.current = true;
-    setHovering(true);
-    setMounted(true);
-    if (isYouTube) ytPlay();
-    else videoRef.current?.play().catch(() => {});
-  };
-
-  const halt = React.useCallback(() => {
-    hoveringRef.current = false;
-    setHovering(false);
-    if (isYouTube) ytPause();
-    else videoRef.current?.pause();
-  }, [isYouTube, ytPause]);
-
-  const stop = () => {
-    halt();
-    if (isUnmuted) setUnmutedId(null);
-  };
-
-  // Pause if the card scrolls away while playing, or when the full player opens.
-  React.useEffect(() => {
-    const el = containerRef.current;
-    if (!el || !isPlayable) return;
-    const io = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting && hoveringRef.current) halt();
-    });
-    io.observe(el);
-    window.addEventListener(PAUSE_PREVIEWS_EVENT, halt);
-    return () => {
-      io.disconnect();
-      window.removeEventListener(PAUSE_PREVIEWS_EVENT, halt);
-    };
-  }, [isPlayable, halt]);
-
-  // Keep sound in sync with the shared "which card is unmuted" state.
-  React.useEffect(() => {
-    if (isYouTube) ytSetMuted(!isUnmuted);
-    else if (videoRef.current) videoRef.current.muted = !isUnmuted;
-  }, [isUnmuted, isYouTube, ytSetMuted]);
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation(); // don't open the full player
-    setUnmutedId(isUnmuted ? null : item.id);
-  };
-
-  const playing = isYouTube ? ytPlaying && hovering : hovering && fileReady;
-
-  if (!isPlayable) {
-    return (
-      <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#0a0a0a]">
-        <img
-          src={item.src}
-          alt={item.title}
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-      </div>
-    );
-  }
-
-  return (
-    <div
-      ref={containerRef}
-      data-cursor="video"
-      className="absolute inset-0 w-full h-full overflow-hidden bg-[#0a0a0a] group/media cursor-pointer"
-      onPointerEnter={(e) => isMousePointer(e) && start()}
-      onPointerLeave={(e) => isMousePointer(e) && stop()}
-    >
-      {/* Player: only exists after the first hover */}
-      {mounted && isYouTube && (
-        <div className={cn(
-          "absolute w-[100%] h-[155%] -top-[27.5%] left-0 transform-gpu",
-          item.isVertical ? "scale-[1.35]" : item.isSquare ? "scale-[1.45]" : "scale-[1.3]"
-        )}>
-          <iframe
-            ref={iframeRef}
-            src={`https://www.youtube.com/embed/${item.videoId}?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&playlist=${item.videoId}&enablejsapi=1&playsinline=1`}
-            className="w-full h-full border-none pointer-events-none"
-            allow="autoplay; encrypted-media"
-            title={item.title}
-            tabIndex={-1}
-            onLoad={onIframeLoad}
-          />
-        </div>
-      )}
-      {isVideoFile && (
-        <video
-          ref={videoRef}
-          src={mounted ? item.src : undefined}
-          preload="none"
-          loop
-          muted
-          playsInline
-          onPlaying={() => setFileReady(true)}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      )}
-
-      {/* Cover image: shown until the video is actually playing (no black flash) */}
-      <img
-        src={item.poster || (isYouTube ? ytThumb(item.videoId) : item.src)}
-        onLoad={isYouTube && !item.poster ? (e) => onThumbLoad(e, item.videoId) : undefined}
-        alt={item.title}
-        loading="lazy"
-        decoding="async"
-        className={cn(
-          "absolute inset-0 w-full h-full object-cover transition-opacity duration-500 pointer-events-none",
-          playing ? "opacity-0" : "opacity-100"
-        )}
-      />
-
-      {/* Play hint while idle */}
-      <div className={cn(
-        "absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none z-10",
-        playing ? "opacity-0" : "opacity-100 bg-black/20"
-      )}>
+const MediaContent = React.memo(({ item }: { item: WorkItem }) => (
+  <div data-cursor="video" className="absolute inset-0 w-full h-full overflow-hidden bg-[#0a0a0a] cursor-pointer">
+    <img
+      src={item.src}
+      alt={item.title}
+      loading="lazy"
+      decoding="async"
+      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+    />
+    {item.type === "drive" && (
+      <div className="absolute inset-0 flex items-center justify-center bg-black/20 pointer-events-none">
         <span className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
-          {hovering && !playing ? (
-            <span className="w-6 h-6 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-          ) : (
-            <Play size={26} className="ml-1" fill="currentColor" />
-          )}
+          <Play size={26} className="ml-1" fill="currentColor" />
         </span>
       </div>
-
-      {/* Sound toggle (only while previewing) */}
-      <div className={cn(
-        "absolute bottom-4 right-4 z-20 transition-opacity duration-300",
-        hovering ? "opacity-100" : "opacity-0 pointer-events-none"
-      )}>
-        <button
-          type="button"
-          onClick={toggleMute}
-          aria-label={isUnmuted ? "Mute preview" : "Unmute preview"}
-          className={cn(
-            "w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300",
-            isUnmuted
-              ? "bg-white text-black border-white shadow-[0_0_15px_rgba(255,255,255,0.5)]"
-              : "bg-black/40 text-white border-white/20 backdrop-blur-md hover:bg-white/10"
-          )}
-        >
-          {isUnmuted ? <Volume2 size={18} /> : <VolumeX size={18} />}
-        </button>
-      </div>
-    </div>
-  );
-});
-MediaContent.displayName = 'MediaContent';
+    )}
+  </div>
+));
+MediaContent.displayName = "MediaContent";
 
 const optimizeCloudinaryUrl = (url: string) => {
   if (!url || !url.includes('cloudinary.com')) return url;
@@ -280,32 +130,32 @@ const AllWork = () => {
         {
           name: "DTC Ads",
           items: [
-            { id: "dtc-NQGkHaMQr0w", title: "DTC campaign 01", tag: "DTC Ads", type: "youtube", videoId: "NQGkHaMQr0w", isVertical: true },
-            { id: "dtc-ZaoHmk7s1S8", title: "DTC campaign 02", tag: "DTC Ads", type: "youtube", videoId: "ZaoHmk7s1S8", isVertical: true },
-            { id: "dtc-ehvAu9tJiGU", title: "DTC campaign 03", tag: "DTC Ads", type: "youtube", videoId: "ehvAu9tJiGU", isVertical: true },
-            { id: "dtc-fqcKu8v7jbI", title: "DTC campaign 04", tag: "DTC Ads", type: "youtube", videoId: "fqcKu8v7jbI", isVertical: true },
-            { id: "dtc-dc4KmxCgTSw", title: "DTC campaign 05", tag: "DTC Ads", type: "youtube", videoId: "dc4KmxCgTSw", isVertical: true },
-            { id: "dtc-pGWFuT_57Bs", title: "DTC campaign 06", tag: "DTC Ads", type: "youtube", videoId: "pGWFuT_57Bs", isVertical: true },
+            { id: "dtc-NQGkHaMQr0w", title: "DTC campaign 01", tag: "DTC Ads", type: "drive", driveId: "1chufzTfrfS9mc0FMWYkrJ8BSP2b5cO-3", src: "https://drive.google.com/thumbnail?id=1chufzTfrfS9mc0FMWYkrJ8BSP2b5cO-3&sz=w1000", isVertical: true },
+            { id: "dtc-ZaoHmk7s1S8", title: "DTC campaign 02", tag: "DTC Ads", type: "drive", driveId: "1Y7tkMwg3TCaJAlVCfu4BmG7m3qZw0RVu", src: "https://drive.google.com/thumbnail?id=1Y7tkMwg3TCaJAlVCfu4BmG7m3qZw0RVu&sz=w1000", isVertical: true },
+            { id: "dtc-ehvAu9tJiGU", title: "DTC campaign 03", tag: "DTC Ads", type: "drive", driveId: "1_rHWaCGGBLoHPg339Sl5m2firzFLJMZn", src: "https://drive.google.com/thumbnail?id=1_rHWaCGGBLoHPg339Sl5m2firzFLJMZn&sz=w1000", isVertical: true },
+            { id: "dtc-fqcKu8v7jbI", title: "DTC campaign 04", tag: "DTC Ads", type: "drive", driveId: "193SRUiweDc5UHXuVEeXkDJmzvTS23kqX", src: "https://drive.google.com/thumbnail?id=193SRUiweDc5UHXuVEeXkDJmzvTS23kqX&sz=w1000", isVertical: true },
+            { id: "dtc-dc4KmxCgTSw", title: "DTC campaign 05", tag: "DTC Ads", type: "drive", driveId: "15hMD8Mr53iwN8Lgy5uNXewmR_8yM_dLl", src: "https://drive.google.com/thumbnail?id=15hMD8Mr53iwN8Lgy5uNXewmR_8yM_dLl&sz=w1000", isVertical: true },
+            { id: "dtc-pGWFuT_57Bs", title: "DTC campaign 06", tag: "DTC Ads", type: "drive", driveId: "1Xi-6bE7GnNZc3rOvjmlwnINkjvtiUoQq", src: "https://drive.google.com/thumbnail?id=1Xi-6bE7GnNZc3rOvjmlwnINkjvtiUoQq&sz=w1000", isVertical: true },
           ]
         },
         {
           name: "AI Films & Microdramas",
           items: [
-            { id: "ai-film-ONJkfWwlXg4", title: "AI short film 01", tag: "AI Films & Microdramas", type: "youtube", videoId: "ONJkfWwlXg4" },
-            { id: "ai-film-w4eaCtA0yxc", title: "AI short film 02", tag: "AI Films & Microdramas", type: "youtube", videoId: "w4eaCtA0yxc" },
+            { id: "ai-film-ONJkfWwlXg4", title: "AI short film 01", tag: "AI Films & Microdramas", type: "drive", driveId: "1NFuTg1ujkA5nPe-_mXB0ItPXny0j3VFd", src: "https://drive.google.com/thumbnail?id=1NFuTg1ujkA5nPe-_mXB0ItPXny0j3VFd&sz=w1000" },
+            { id: "ai-film-w4eaCtA0yxc", title: "AI short film 02", tag: "AI Films & Microdramas", type: "drive", driveId: "1mjbzWsS7d57KDsJSfAL3ncVXMTUcuC2S", src: "https://drive.google.com/thumbnail?id=1mjbzWsS7d57KDsJSfAL3ncVXMTUcuC2S&sz=w1000" },
           ]
         },
         {
           name: "AI Storytelling",
           items: [
-            { id: "ai-story-SPQJ5s6bWyk", title: "AI story 01", tag: "AI Storytelling", type: "youtube", videoId: "SPQJ5s6bWyk", isVertical: true },
-            { id: "ai-story-qF2oUtdswVI", title: "AI story 02", tag: "AI Storytelling", type: "youtube", videoId: "qF2oUtdswVI", isVertical: true },
+            { id: "ai-story-SPQJ5s6bWyk", title: "AI story 01", tag: "AI Storytelling", type: "drive", driveId: "1rT3OErEBgzJKUp8krCxql-IgtzK3CnVn", src: "https://drive.google.com/thumbnail?id=1rT3OErEBgzJKUp8krCxql-IgtzK3CnVn&sz=w1000", isVertical: true },
+            { id: "ai-story-qF2oUtdswVI", title: "AI story 02", tag: "AI Storytelling", type: "drive", driveId: "13mFbUfkABrmz4WgkNWYjU3CVbbFuzXYt", src: "https://drive.google.com/thumbnail?id=13mFbUfkABrmz4WgkNWYjU3CVbbFuzXYt&sz=w1000", isVertical: true },
           ]
         },
         {
           name: "Cartoon Advertisements",
           items: [
-            { id: "cartoon-hxsKre4FbgI", title: "Cartoon ad 01", tag: "Cartoon Advertisements", type: "youtube", videoId: "hxsKre4FbgI", isVertical: true },
+            { id: "cartoon-hxsKre4FbgI", title: "Cartoon ad 01", tag: "Cartoon Advertisements", type: "drive", driveId: "16VTW-DKWoh2PZSt1zhbjP1Iusc9guCc9", src: "https://drive.google.com/thumbnail?id=16VTW-DKWoh2PZSt1zhbjP1Iusc9guCc9&sz=w1000", isVertical: true },
           ]
         },
       ]
@@ -319,23 +169,23 @@ const AllWork = () => {
         {
           name: "Motion Graphics",
           items: [
-            { id: "motion-UWUybnqWsQk", title: "Amazon motion ad", tag: "Motion Graphics", type: "youtube", videoId: "UWUybnqWsQk", isVertical: true },
-            { id: "motion-UMvPrUM4hHo", title: "Motion graphic 02", tag: "Motion Graphics", type: "youtube", videoId: "UMvPrUM4hHo", isVertical: true },
-            { id: "motion-FA0pcZJoDl0", title: "Motion graphic preview", tag: "Motion Graphics", type: "youtube", videoId: "FA0pcZJoDl0" },
-            { id: "motion-01H1TOQ6uuk", title: "Motion graphic 03", tag: "Motion Graphics", type: "youtube", videoId: "01H1TOQ6uuk" },
+            { id: "motion-UWUybnqWsQk", title: "Amazon motion ad", tag: "Motion Graphics", type: "drive", driveId: "1aFYeXZG2_iuw2ZUo0KOtBzI-RSvOgCmR", src: "https://drive.google.com/thumbnail?id=1aFYeXZG2_iuw2ZUo0KOtBzI-RSvOgCmR&sz=w1000", isVertical: true },
+            { id: "motion-UMvPrUM4hHo", title: "Motion graphic 02", tag: "Motion Graphics", type: "drive", driveId: "1kD1W4oBrdA-tdTCPgvZwCh7CLOEijct3", src: "https://drive.google.com/thumbnail?id=1kD1W4oBrdA-tdTCPgvZwCh7CLOEijct3&sz=w1000", isVertical: true },
+            { id: "motion-FA0pcZJoDl0", title: "Motion graphic preview", tag: "Motion Graphics", type: "drive", driveId: "1_LKSKLVz4SuiBDU82g08JJB6aQnnK0ra", src: "https://drive.google.com/thumbnail?id=1_LKSKLVz4SuiBDU82g08JJB6aQnnK0ra&sz=w1000" },
+            { id: "motion-01H1TOQ6uuk", title: "Motion graphic 03", tag: "Motion Graphics", type: "drive", driveId: "1Bh9nzs2xbodr3nFLAZUb7KmqIEoMl1Ym", src: "https://drive.google.com/thumbnail?id=1Bh9nzs2xbodr3nFLAZUb7KmqIEoMl1Ym&sz=w1000" },
           ]
         },
         {
           name: "Story Explainer",
           items: [
-            { id: "explainer-n5ZzpteMsOs", title: "Origin of Clea (Hindi explainer)", tag: "Story Explainer", type: "youtube", videoId: "n5ZzpteMsOs" },
-            { id: "explainer-duFUqDAfSW4", title: "Doctor Strange’s Third Eye (Hindi explainer)", tag: "Story Explainer", type: "youtube", videoId: "duFUqDAfSW4" },
+            { id: "explainer-n5ZzpteMsOs", title: "Origin of Clea (Hindi explainer)", tag: "Story Explainer", type: "drive", driveId: "1EbnIsemnbB9_oisC49048O0Vvi7kbHpQ", src: "https://drive.google.com/thumbnail?id=1EbnIsemnbB9_oisC49048O0Vvi7kbHpQ&sz=w1000" },
+            { id: "explainer-duFUqDAfSW4", title: "Doctor Strange’s Third Eye (Hindi explainer)", tag: "Story Explainer", type: "drive", driveId: "1Dl3SERv6BGCExSIp7LNOLuMbE6GgAIik", src: "https://drive.google.com/thumbnail?id=1Dl3SERv6BGCExSIp7LNOLuMbE6GgAIik&sz=w1000" },
           ]
         },
         {
           name: "Launch Video",
           items: [
-            { id: "launch-UDl-ZE4k2so", title: "Aftermovie", tag: "Launch Video", type: "youtube", videoId: "UDl-ZE4k2so" },
+            { id: "launch-UDl-ZE4k2so", title: "Aftermovie", tag: "Launch Video", type: "drive", driveId: "1ii5sMmy2sKM_T9ZMTrg7f7S4ITBVjJYZ", src: "https://drive.google.com/thumbnail?id=1ii5sMmy2sKM_T9ZMTrg7f7S4ITBVjJYZ&sz=w1000" },
           ]
         },
       ]
@@ -614,7 +464,15 @@ const AllWork = () => {
               exit={{ scale: 0.9, y: 20 }}
               className="relative w-full max-w-6xl aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black"
             >
-              {selectedVideo.type === 'youtube' ? (
+              {selectedVideo.type === 'drive' ? (
+                <iframe
+                  src={`https://drive.google.com/file/d/${selectedVideo.driveId}/preview`}
+                  className="w-full h-full border-none"
+                  allow="autoplay; encrypted-media; fullscreen"
+                  allowFullScreen
+                  title={selectedVideo.title}
+                />
+              ) : selectedVideo.type === 'youtube' ? (
                 <iframe
                   src={`https://www.youtube.com/embed/${selectedVideo.videoId}?autoplay=1&rel=0&modestbranding=1`}
                   className="w-full h-full border-none"
@@ -641,3 +499,4 @@ const AllWork = () => {
 };
 
 export default AllWork;
+
