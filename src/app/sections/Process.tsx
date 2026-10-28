@@ -98,7 +98,7 @@ export const Process = () => {
                   <h3 className="text-xl font-serif text-white group-hover:translate-x-1 transition-transform">
                     <TextEffect preset="blur">{service.title}</TextEffect>
                   </h3>
-                  <p className="text-white/40 text-sm leading-relaxed">
+                  <p className="text-white/40 text-sm leading-relaxed text-justify">
                     {service.description}
                   </p>
                 </div>
