@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Play, Volume2, VolumeX } from 'lucide-react';
+import { X, Play } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import { GlowCard } from '@/components/ui/spotlight-card';
 import { RandomLetterSwapPingPong } from '@/components/ui/random-letter-swap';
@@ -10,13 +10,12 @@ import { SectionReveal } from '@/components/ui/SectionReveal';
 import { MacbookShowcase } from '@/components/ui/MacbookShowcase';
 import { TextScramble } from '@/components/ui/text-scramble';
 import { startSmoothScroll, stopSmoothScroll, scrollToTarget } from '@/lib/scroll';
-import { useYouTubePlayer, isMousePointer, ytThumb, onThumbLoad } from '@/lib/youtube';
+import { useYouTubePlayer } from '@/lib/youtube';
 interface WorkItem {
   id: string;
   title: string;
   tag: string;
-  type: 'youtube' | 'cloudinary' | 'drive' | 'image';
-  videoId?: string;
+  type: 'drive' | 'image';
   driveId?: string;
   src?: string;
   poster?: string;
@@ -24,7 +23,7 @@ interface WorkItem {
   isSquare?: boolean;
 }
 
-const PAUSE_PREVIEWS_EVENT = 'allwork:pause-previews';
+
 
 const MediaContent = React.memo(({ item }: { item: WorkItem }) => (
   <div data-cursor="video" className="absolute inset-0 w-full h-full overflow-hidden bg-[#0a0a0a] cursor-pointer">
@@ -117,7 +116,7 @@ const WorkJumpNav = () => (
 
 const AllWork = () => {
   const [selectedVideo, setSelectedVideo] = useState<WorkItem | null>(null);
-  const [unmutedId, setUnmutedId] = useState<string | null>(null);
+
 
   const categories = useMemo(() => [
     {
@@ -194,7 +193,7 @@ const AllWork = () => {
 
   React.useEffect(() => {
     if (!selectedVideo) return;
-    window.dispatchEvent(new Event(PAUSE_PREVIEWS_EVENT)); // stop any hover preview behind the modal
+
     stopSmoothScroll();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setSelectedVideo(null);
@@ -373,9 +372,9 @@ const AllWork = () => {
                                 >
                                   <div className="w-full h-full" onClick={() => {
                                     setSelectedVideo(item);
-                                    setUnmutedId(null); // Mute gallery when modal opens
+
                                   }}>
-                                    <MediaContent item={item} isUnmuted={unmutedId === item.id} setUnmutedId={setUnmutedId} />
+                                    <MediaContent item={item} />
 
                                   </div>
                                 </motion.div>
@@ -399,9 +398,9 @@ const AllWork = () => {
                                 >
                                   <div className="w-full h-full" onClick={() => {
                                     setSelectedVideo(item);
-                                    setUnmutedId(null); // Mute gallery when modal opens
+
                                   }}>
-                                    <MediaContent item={item} isUnmuted={unmutedId === item.id} setUnmutedId={setUnmutedId} />
+                                    <MediaContent item={item} />
 
                                   </div>
                                 </motion.div>
@@ -421,9 +420,9 @@ const AllWork = () => {
                               >
                                 <div className="w-full h-full" onClick={() => {
                                   setSelectedVideo(item);
-                                  setUnmutedId(null); // Mute gallery when modal opens
+
                                 }}>
-                                  <MediaContent item={item} isUnmuted={unmutedId === item.id} setUnmutedId={setUnmutedId} />
+                                  <MediaContent item={item} />
 
                                 </div>
                               </motion.div>
@@ -472,23 +471,8 @@ const AllWork = () => {
                   allowFullScreen
                   title={selectedVideo.title}
                 />
-              ) : selectedVideo.type === 'youtube' ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/${selectedVideo.videoId}?autoplay=1&rel=0&modestbranding=1`}
-                  className="w-full h-full border-none"
-                  allow="autoplay; encrypted-media; fullscreen"
-                  allowFullScreen
-                  title={selectedVideo.title}
-                />
               ) : selectedVideo.type === 'image' ? (
                 <img src={selectedVideo.src} className="w-full h-full object-contain" alt={selectedVideo.title} />
-              ) : (
-                <video
-                  src={selectedVideo.src}
-                  controls
-                  autoPlay
-                  className="w-full h-full"
-                />
               )}
             </motion.div>
           </motion.div>
