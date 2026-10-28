@@ -116,10 +116,10 @@ export const About = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
                 
-                {/* Location / Availability Badge */}
+                {/* Availability Badge */}
                 <div className="absolute bottom-6 left-6 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0c0c0c]/80 backdrop-blur-md border border-white/5">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#22c55e] shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
-                  <span className="text-[9px] uppercase tracking-widest text-white/90 font-bold">Based in Gorakhpur, India</span>
+                  <span className="text-[9px] uppercase tracking-widest text-white/90 font-bold">Available for work</span>
                 </div>
               </div>
 
