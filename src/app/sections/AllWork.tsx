@@ -10,7 +10,6 @@ import { SectionReveal } from '@/components/ui/SectionReveal';
 import { MacbookShowcase } from '@/components/ui/MacbookShowcase';
 import { TextScramble } from '@/components/ui/text-scramble';
 import { startSmoothScroll, stopSmoothScroll, scrollToTarget } from '@/lib/scroll';
-import { useYouTubePlayer } from '@/lib/youtube';
 interface WorkItem {
   id: string;
   title: string;
