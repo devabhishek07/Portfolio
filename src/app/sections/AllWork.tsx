@@ -24,24 +24,60 @@ interface WorkItem {
 
 
 
-const MediaContent = React.memo(({ item }: { item: WorkItem }) => (
-  <div data-cursor="video" className="absolute inset-0 w-full h-full overflow-hidden bg-[#0a0a0a] cursor-pointer">
-    <img
-      src={item.src}
-      alt={item.title}
-      loading="lazy"
-      decoding="async"
-      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-    />
-    {item.type === "drive" && (
-      <div className="absolute inset-0 flex items-center justify-center bg-black/20 pointer-events-none">
-        <span className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
-          <Play size={26} className="ml-1" fill="currentColor" />
-        </span>
-      </div>
-    )}
-  </div>
-));
+const MediaContent = React.memo(({ item }: { item: WorkItem }) => {
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  React.useEffect(() => {
+    const video = videoRef.current;
+    if (!video || item.type !== "drive" || !item.driveId) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        video.play().catch(() => setPlaying(false));
+      } else {
+        video.pause();
+      }
+    }, { rootMargin: "80px" });
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [item.driveId, item.type]);
+
+  return (
+    <div data-cursor="video" className="absolute inset-0 w-full h-full overflow-hidden bg-[#0a0a0a] cursor-pointer">
+      <img
+        src={item.src}
+        alt={item.title}
+        loading="lazy"
+        decoding="async"
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${playing ? "opacity-0" : "opacity-100"}`}
+      />
+      {item.type === "drive" && item.driveId && (
+        <video
+          ref={videoRef}
+          src={`https://drive.google.com/uc?export=download&id=${item.driveId}`}
+          muted
+          loop
+          playsInline
+          preload="none"
+          onPlaying={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          onError={() => setPlaying(false)}
+          aria-label={item.title}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      )}
+      {!playing && item.type === "drive" && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/20 pointer-events-none">
+          <span className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
+            <Play size={26} className="ml-1" fill="currentColor" />
+          </span>
+        </div>
+      )}
+    </div>
+  );
+});
 MediaContent.displayName = "MediaContent";
 
 const optimizeCloudinaryUrl = (url: string) => {
@@ -128,7 +164,6 @@ const AllWork = () => {
         {
           name: "DTC Ads",
           items: [
-            { id: "dtc-NQGkHaMQr0w", title: "DTC campaign 01", tag: "DTC Ads", type: "drive", driveId: "1chufzTfrfS9mc0FMWYkrJ8BSP2b5cO-3", src: "https://drive.google.com/thumbnail?id=1chufzTfrfS9mc0FMWYkrJ8BSP2b5cO-3&sz=w1000", isVertical: true },
             { id: "dtc-ZaoHmk7s1S8", title: "DTC campaign 02", tag: "DTC Ads", type: "drive", driveId: "1Y7tkMwg3TCaJAlVCfu4BmG7m3qZw0RVu", src: "https://drive.google.com/thumbnail?id=1Y7tkMwg3TCaJAlVCfu4BmG7m3qZw0RVu&sz=w1000", isVertical: true },
             { id: "dtc-ehvAu9tJiGU", title: "DTC campaign 03", tag: "DTC Ads", type: "drive", driveId: "1_rHWaCGGBLoHPg339Sl5m2firzFLJMZn", src: "https://drive.google.com/thumbnail?id=1_rHWaCGGBLoHPg339Sl5m2firzFLJMZn&sz=w1000", isVertical: true },
             { id: "dtc-fqcKu8v7jbI", title: "DTC campaign 04", tag: "DTC Ads", type: "drive", driveId: "193SRUiweDc5UHXuVEeXkDJmzvTS23kqX", src: "https://drive.google.com/thumbnail?id=193SRUiweDc5UHXuVEeXkDJmzvTS23kqX&sz=w1000", isVertical: true },
