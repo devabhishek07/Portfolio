@@ -5,7 +5,7 @@ export const siteConfig = {
   title: "%s | Abhishek Kumar — Video Editor",
   defaultTitle: "Abhishek Kumar — Video Editor and Graphic Designer",
   description:
-    "Video editor and graphic designer creating social videos, campaign ads, motion graphics, and brand visuals. Based in Gorakhpur, India.",
+    "Video editor and graphic designer creating social videos, campaign ads, motion graphics, and brand visuals. Based in Bangalore, India.",
   ogImage: "/og-image.png",
   twitterHandle: "",
 };
@@ -39,3 +39,4 @@ export const categories = [
   "Motion Graphics",
   "Graphic Design",
 ] as const;
+
